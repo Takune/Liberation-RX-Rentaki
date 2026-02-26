@@ -84,4 +84,11 @@ class Params
 		texts[] = { "" };
 		default = "";
 	};
+	class GRLIB_delete_old_unit
+	{
+    title = "Respawn: удалять старого персонажа после смерти";
+    values[] = {0, 1};
+    texts[]  = {"Нет", "Да"};
+    default  = 1;
+	};
 };
