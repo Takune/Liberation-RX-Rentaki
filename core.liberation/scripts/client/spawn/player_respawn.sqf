@@ -55,10 +55,6 @@ if (GRLIB_side_friendly == WEST) then {
     deleteVehicle _newUnit;
 };
 
-// Remove old unit
-removeAllWeapons _oldUnit;
-deleteVehicle _oldUnit;
-
 // Player Loadout
 if !(_unit getVariable ["GRLIB_player_context_loaded", false]) then {
     [_unit] remoteExec ["load_player_context_remote_call", 2];
