@@ -1,5 +1,9 @@
 params ["_newUnit", "_oldUnit"];
 
+// LRX Player Respawn
+
+titleText ["" ,"BLACK FADED", 100];
+
 GRLIB_player_configured = false;
 [_newUnit] call clean_unit;
 _newUnit switchMove "";
@@ -17,19 +21,18 @@ if (GRLIB_side_friendly == WEST) then {
     if (GRLIB_side_friendly == INDEPENDENT) then { _class = "I" + (_class select [1]) };
     _unit = GRLIB_player_group createUnit [_class, position player, [], 1, "NONE"];
     [_unit] joinSilent GRLIB_player_group;
+    if (GRLIB_is_Commander) then { _unit setvariable ["GRLIB_is_Commander", true, true] };
     [_unit] call clean_unit;
     [_unit, [profileName,profileName,profileName]] remoteExec ["setName", 0];
     _unit switchMove "";
     selectPlayer _unit;
     if (!isNull _oldUnit) then {
         // Set player variables
-        _unit setVariable ["my_dog", (_oldUnit getVariable ["my_dog", nil])];
-        _unit setVariable ["my_squad", (_oldUnit getVariable ["my_squad", nil])];
         _unit setVariable ["GRLIB_player_context_loaded", (_oldUnit getVariable ["GRLIB_player_context_loaded", false]), true];
         _unit setVariable ["GRLIB_squad_context_loaded", (_oldUnit getVariable ["GRLIB_squad_context_loaded", false]), true];
         _unit setVariable ["GRLIB_virtual_garage", (_oldUnit getVariable ["GRLIB_virtual_garage", []]), true];
         _unit setVariable ["GRLIB_personal_arsenal", (_oldUnit getVariable ["GRLIB_personal_arsenal", []]), true];
-        _unit setVariable ["GRLIB_player_box", (_oldUnit getVariable ["GRLIB_player_box", []]), true];     
+        _unit setVariable ["GRLIB_player_box", (_oldUnit getVariable ["GRLIB_player_box", objNull]), true];     
         _unit setVariable ["GRLIB_player_box_content", (_oldUnit getVariable ["GRLIB_player_box_content", []]), true];
         _unit setVariable ["GREUH_score_count", (_oldUnit getVariable ["GREUH_score_count", 0]), true];
         _unit setVariable ["GREUH_score_last", (_oldUnit getVariable ["GREUH_score_last", 0]), true];
@@ -43,6 +46,8 @@ if (GRLIB_side_friendly == WEST) then {
         _unit setVariable ["GREUH_killed", (_oldUnit getVariable ["GREUH_killed", 0]), true];
         _unit setVariable ["GRLIB_TFAR_SW_config", (_oldUnit getVariable ["GRLIB_TFAR_SW_config", []]), true];
         _unit setVariable ["GRLIB_TFAR_LR_config", (_oldUnit getVariable ["GRLIB_TFAR_LR_config", []]), true];
+        _unit setVariable ["my_dog", (_oldUnit getVariable ["my_dog", nil])];
+        _unit setVariable ["my_squad", (_oldUnit getVariable ["my_squad", nil])];
     };
     [_unit] call player_EHP;
     [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
@@ -61,7 +66,7 @@ waitUntil { sleep 0.5; (_unit getVariable ["GRLIB_player_context_loaded", false]
 waitUntil { sleep 0.5; startgame == 1 };
 
 [_unit] call player_EH;
-[_unit] spawn player_init;
+[_unit] call player_init;
 _unit setvariable ["PAR_grave_box", PAR_grave_box, true];
 
 // Keep player first / Reset group

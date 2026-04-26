@@ -1,16 +1,15 @@
 diag_log "--- Client wait for Server init ---";
 
-titleText ["-- Liberation RX --","BLACK FADED", 100];
 waitUntil {
-	sleep 1;
 	titleText [localize "STR_TITLE_LOADING", "BLACK FADED", 100];
-	sleep 1;
+	uisleep 1;
 	titleText [localize "STR_TITLE_PLEASE_WAIT", "BLACK FADED", 100];
+	uisleep 1;
 	(!isNil "GRLIB_init_server")
 };
+titleText ["", "BLACK FADED", 100];
 
 diag_log "--- Client Init start ---";
-titleText ["", "BLACK FADED", 100];
 
 // Game life / details
 setTerrainGrid 25;
@@ -62,6 +61,7 @@ if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
 };
 
 // Enforce White list
+GRLIB_is_Commander = (player getvariable ["GRLIB_is_Commander", false]);
 [] call compileFinal preprocessFileLineNumbers "scripts\client\commander\enforce_whitelist.sqf";
 
 private _name = name player;
@@ -127,10 +127,9 @@ if (GRLIB_respawn_cooldown > 0) then {
 	};
 };
 
-if ( typeOf player == "VirtualSpectator_F" ) exitWith {
+if (typeOf player == "VirtualSpectator_F") exitWith {
 	[] execVM "scripts\client\markers\vehicles_marker.sqf";
 	[] execVM "scripts\client\markers\hostile_groups.sqf";
-	[] execVM "scripts\client\markers\spot_timer.sqf";
 	[] execVM "scripts\client\ui\ui_manager.sqf";
 };
 
@@ -145,24 +144,13 @@ GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
 waituntil {
 	titleText ["... Loading Player Data ...", "BLACK FADED", 100];
 	uIsleep 1;
-	titleText ["... Please Wait ...", "BLACK FADED", 100];
+	titleText [localize "STR_TITLE_PLEASE_WAIT", "BLACK FADED", 100];
 	uIsleep 1;
 	(player getVariable ["GRLIB_score_set", 0] == 1 && player in (units GRLIB_player_group));
 };
-
+titleText ["", "BLACK FADED", 100];
 [GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
 
-// LRX Arsenal
-diag_log "--- LRX: Build Arsenal Classnames ---";
-[] call compileFinal preprocessFileLineNumbers "addons\LARs\default_classnames.sqf";
-[] call compileFinal preprocessFileLineNumbers "addons\LARs\liberationArsenal.sqf";
-waituntil {
-	titleText ["... Building the Arsenal ...", "BLACK FADED", 100];
-	uIsleep 1;
-	titleText ["... Please Wait ...", "BLACK FADED", 100];
-	uIsleep 1;
-	(LRX_arsenal_init_done);
-};
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init_client.sqf";
 
 // LRX Addons
@@ -179,13 +167,18 @@ waituntil {
 [] execVM "addons\WHS\warehouse_init.sqf";
 [] execVM "addons\FOB\officer_init.sqf";
 
+// LRX Arsenal
+diag_log "--- LRX: Build Arsenal Classnames ---";
+[] call compileFinal preprocessFileLineNumbers "addons\LARs\default_classnames.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\LARs\liberationArsenal.sqf";
+sleep 3;
+
 // Start intro
 diag_log "--- Client Intro start ---";
 playMusic GRLIB_music_startup;
 [] execVM "scripts\client\ui\intro.sqf";
-sleep 2;
 
-waitUntil {sleep 0.1; startgame == 1};
+waitUntil {sleep 0.1; (LRX_arsenal_init_done && startgame == 1)};
 [] spawn {
 	waituntil {sleep 1; GRLIB_player_configured};
 	10 fadeMusic 0;
@@ -214,7 +207,6 @@ waitUntil {sleep 0.1; startgame == 1};
 [] execVM "scripts\client\markers\players_marker.sqf";
 [] execVM "scripts\client\markers\vehicles_marker.sqf";
 [] execVM "scripts\client\markers\hostile_groups.sqf";
-[] execVM "scripts\client\markers\spot_timer.sqf";
 [] execVM "scripts\client\commander\commander_marker.sqf";
 //[] execVM "scripts\client\markers\logs_markers.sqf";
 
@@ -251,6 +243,7 @@ GRLIB_LastNews = 0;
 { [_x] call BIS_fnc_drawCuratorLocations } foreach allCurators;
 
 // Sign Add
+dobuild = 0;
 addMissionEventHandler ["Draw3D",{
 	if !(isNull objectParent player) exitWith {};
 	private _pos = ASLToAGL getPosASL chimera_sign;
@@ -272,33 +265,22 @@ addMissionEventHandler ["Draw3D",{
 		drawIcon3D ["", [1,1,1,1], (ASLToAGL getPosASL _sign) vectorAdd [0, 0, 2.5], 0, 0, 0, format ["- %1 %2 -", _type, _name], 2, 0.07, "RobotoCondensed", "center"];
 	};
 
-	private _near_box = nearestObjects [player, [playerbox_typename], 3];
-	if (count (_near_box) > 0) then {
-		private _box = _near_box select 0;
-		private _box_pos = ASLToAGL getPosASL _box;
-		private _gid = _box getVariable ["GRLIB_vehicle_owner", ""];
-		private _name = GRLIB_player_scores select { _x select 0 == _gid } select 0 select 5;
-		drawIcon3D ["", [1,1,1,1], _box_pos vectorAdd [0, 0, 1], 2, 2, 0, format ["- %1 Personal Box -", _name], 2, 0.05, "RobotoCondensed", "center"];
-		if (_gid == PAR_Grp_ID) then {
-			if (isNull (player getVariable ["GRLIB_player_box", objNull])) then {
-				player setVariable ["GRLIB_player_box", _box, true];
-				private _box_content = player getVariable ["GRLIB_player_box_content", []];
-				if (count _box_content > 0) then {
-					[_box] call F_clearCargo;
-					_box setMaxLoad playerbox_cargospace;
-					_box setVariable ["GRLIB_player_box_loaded", PAR_Grp_ID, true];
-					[_box, _box_content] call F_setCargo;
-					player setVariable ["GRLIB_player_box_content", [], true];
-				};
-			};
+	if (dobuild == 0) then {
+		private _near_box = nearestObjects [player, [playerbox_typename], 3];
+		if (count _near_box > 0) then {
+			private _box = _near_box select 0;
+			private _box_pos = ASLToAGL getPosASL _box;
+			private _gid = _box getVariable ["GRLIB_vehicle_owner", ""];
+			private _name = GRLIB_player_scores select { _x select 0 == _gid } select 0 select 5;
+			drawIcon3D ["", [1,1,1,1], _box_pos vectorAdd [0, 0, 1], 2, 2, 0, format ["- %1 Personal Box -", _name], 2, 0.05, "RobotoCondensed", "center"];
 		};
-	};
 
-	private _near_storage = nearestObjects [player, ["VR_Area_01_square_2x2_yellow_F"], 2];
-	if (count (_near_storage) > 0) then {
-		private _storage = _near_storage select 0;
-		private _storage_pos = ASLToAGL getPosASL _storage;
-		drawIcon3D ["", [1,1,1,1], _storage_pos vectorAdd [0, 0, 1], 2, 2, 0, "Use LOAD / UNLOAD Action", 2, 0.05, "RobotoCondensed", "center"];
+		private _near_storage = nearestObjects [player, ["VR_Area_01_square_2x2_yellow_F"], 2];
+		if (count (_near_storage) > 0) then {
+			private _storage = _near_storage select 0;
+			private _storage_pos = ASLToAGL getPosASL _storage;
+			drawIcon3D ["", [1,1,1,1], _storage_pos vectorAdd [0, 0, 1], 2, 2, 0, "Use LOAD / UNLOAD Action", 2, 0.05, "RobotoCondensed", "center"];
+		};
 	};
 
 	private _near_static = nearestObjects [player, static_vehicles_AI, 5];

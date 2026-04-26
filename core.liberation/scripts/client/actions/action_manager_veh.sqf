@@ -1,4 +1,4 @@
-private	["_vehicle", "_unit"];
+private	["_vehicle", "_class", "_unit"];
 
 private _searchradius = 25;
 private _nearveh = [];
@@ -12,7 +12,7 @@ private _nearstatics = [];
 private _nearsign = [];
 private _nearmoney = [];
 private _nearfobbox = [];
-private _neardronebox = [];
+private _nearpersobox = [];
 private _neartent = [];
 
 private _wreck_class = [
@@ -39,24 +39,38 @@ while {true} do {
 	_nearveh = (player nearEntities [["LandVehicle","Air","Ship_F"], _searchradius]) select {
 		isNil {_x getVariable "GRLIB_vehicle_action"} &&
 		(_x distance2D lhd > GRLIB_fob_range) &&
-		!(typeOf _x in list_static_weapons)
+		!(typeOf _x in (list_static_weapons + static_vehicles_AI))
 	};
 
 	{
 		_vehicle = _x;
+		_class = typeOf _vehicle;
 		GRLIB_ActionDist_5 = 5;
 		if ([_vehicle, vehicle_big_units] call F_itemIsInClass) then {
 			GRLIB_ActionDist_5 = GRLIB_ActionDist_5 * 3;
 		};
-		_vehicle addAction ["<t color='#00AA00'>" + localize "STR_MAN_MANAGER" + "</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>","scripts\client\actions\do_speak.sqf","",-504,false,true,"","[_target, _this] call GRLIB_checkAction_Speak", GRLIB_ActionDist_5];
+		if (_class in civilian_vehicles) then {
+			_vehicle addAction ["<t color='#00AA00'>" + localize "STR_MAN_MANAGER" + "</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>","scripts\client\actions\do_speak.sqf","",-504,false,true,"","[_target, _this] call GRLIB_checkAction_Speak", GRLIB_ActionDist_5];
+		};
 		_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_UN_FLIP" + "</t> <img size='1' image='res\ui_flipveh.paa'/>","scripts\client\actions\do_unflip.sqf","",-505,false,true,"","[_target, _this] call GRLIB_checkAction_Flip", GRLIB_ActionDist_10];
 		_vehicle addAction ["<t color='#800000'>" + localize "STR_DE_FUEL" + "</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_defuel.sqf","",-506,false,true,"","[_target, _this] call GRLIB_checkAction_DeFuel", GRLIB_ActionDist_5];
 		_vehicle addAction ["<t color='#009000'>" + localize "STR_RE_FUEL" + "</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_refuel.sqf","",-506,false,true,"","[_target, _this] call GRLIB_checkAction_ReFuel", GRLIB_ActionDist_5];
 		_vehicle addAction ["<t color='#009F00'>" + localize "STR_REPAIR_VEH" + "</t> <img size='1' image='res\ui_rotation.paa'/>", "scripts\client\actions\do_repair.sqf","",-508,false,true,"","[_target, _this] call GRLIB_checkAction_Repair", GRLIB_ActionDist_5];
 		_vehicle addAction ["<t color='#BC884C'>" + localize "STR_STICKY_BOMB" + "</t> <img size='1' image='res\skull.paa'/>", "scripts\client\actions\do_sticky_bomb.sqf","",-509,false,true,"","[_target, _this] call GRLIB_checkAction_Sticky", GRLIB_ActionDist_3];
 
-		if ([_vehicle, ['LandVehicle','Ship']] call F_itemIsInClass) then {
+		if ([_vehicle, ["LandVehicle","Ship"]] call F_itemIsInClass) then {
 			_vehicle addAction ["<t color='#009000'>" + localize "STR_HALO_VEH" + "</t> <img size='1' image='res\ui_redeploy.paa'/>", "scripts\client\spawn\do_halo.sqf","",-507,false,true,"","[_target, _this] call GRLIB_checkAction_Halo", GRLIB_ActionDist_10];
+		};
+
+		if (_vehicle isKindOf "Air") then {
+			private _cfgComponent = configOf _vehicle >> "Components" >> "TransportPylonsComponent";
+			if (!isClass _cfgComponent) exitWith {};
+			private _actionID = _vehicle addAction ["", DALE_fnc_dlgLoadoutOpen, nil, 20, false, true, "", "[_target, _this] call GRLIB_DALE_actionCond"];
+			_vehicle setUserActionText [_actionID, "<t color='#009000'>" + localize "STR_DALE_Actions_Loadout" + "</t> <img size='1' image='a3\ui_f\data\IGUI\Cfg\Actions\reammo_ca.paa'/>"];
+		};
+
+		if (_class == FOB_truck_typename) then {
+			_vehicle addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","[_target, _this] call GRLIB_checkBuildFOB", GRLIB_ActionDist_5];
 		};
 
 		if (!([_vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass) && !([_vehicle] call is_public)) then {
@@ -143,22 +157,42 @@ while {true} do {
 	} foreach _nearmoney;
 
 	// FOB Box
-	_nearfobbox = (nearestObjects [player, [FOB_box_typename, FOB_truck_typename, FOB_box_outpost], _searchradius]) select { isNil {_x getVariable "GRLIB_fobbox_action"} };
+	_nearfobbox = (nearestObjects [player, [FOB_box_typename, FOB_box_outpost, "Cargo_base_F", "Slingload_base_F"], _searchradius]) select { isNil {_x getVariable "GRLIB_fobbox_action"} };
 	{
 		_unit = _x;
-		if (typeOf _unit == FOB_truck_typename) then {
-			_unit addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","[_target, _this] call GRLIB_checkBuildFOB", GRLIB_ActionDist_5];
+		if (_unit isKindOf "Cargo_base_F" || _unit isKindOf "Slingload_base_F") then {
+			_unit addAction ["<t color='#009000'>" + localize "STR_HALO_VEH" + "</t> <img size='1' image='res\ui_redeploy.paa'/>", "scripts\client\spawn\do_halo.sqf","",-507,false,true,"","[_target, _this] call GRLIB_checkAction_Halo", GRLIB_ActionDist_5];
 		};
 		if (typeOf _unit == FOB_box_typename) then {
 			_unit addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","[_target, _this] call GRLIB_checkBuildFOB", GRLIB_ActionDist_5];
-			_unit addAction ["<t color='#009000'>" + localize "STR_HALO_VEH" + "</t> <img size='1' image='res\ui_redeploy.paa'/>", "scripts\client\spawn\do_halo.sqf","",-507,false,true,"","[_target, _this] call GRLIB_checkAction_Halo", GRLIB_ActionDist_5];
 		};
 		if (typeOf _unit == FOB_box_outpost) then {
 			_unit addAction ["<t color='#FF6F00'>" + localize "STR_OUTPOST_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","[_target, _this] call GRLIB_checkBuildFOB", GRLIB_ActionDist_5];
-			_unit addAction ["<t color='#009000'>" + localize "STR_HALO_VEH" + "</t> <img size='1' image='res\ui_redeploy.paa'/>", "scripts\client\spawn\do_halo.sqf","",-507,false,true,"","[_target, _this] call GRLIB_checkAction_Halo", GRLIB_ActionDist_5];
 		};
 		_unit setVariable ["GRLIB_fobbox_action", true];
 	} foreach _nearfobbox;
+
+	// Personal Ammobox
+	_nearpersobox = (nearestObjects [player, [playerbox_typename], _searchradius]) select { isNil {_x getVariable "GRLIB_personalbox_action"} };
+	{
+		_unit = _x;
+		_unit addAction ["<t color='#00FFFF'>" + localize "STR_ARSENAL_PICKUP" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_loot_veh.sqf","",-504,false,true,"","[_target, _this] call GRLIB_checkAction_Pickup_Weapons", GRLIB_ActionDist_5];
+		_unit setVariable ["GRLIB_personalbox_action", true];
+		private _gid = _unit getVariable ["GRLIB_vehicle_owner", ""];
+		if (_gid == PAR_Grp_ID) then {
+			if (isNull (player getVariable ["GRLIB_player_box", objNull])) then {
+				player setVariable ["GRLIB_player_box", _unit, true];
+				private _box_content = player getVariable ["GRLIB_player_box_content", []];
+				if (count _box_content > 0) then {
+					[_unit] call F_clearCargo;
+					_unit setMaxLoad playerbox_cargospace;
+					_unit setVariable ["GRLIB_player_box_loaded", PAR_Grp_ID, true];
+					[_unit, _box_content] call F_setCargo;
+					player setVariable ["GRLIB_player_box_content", [], true];
+				};
+			};
+		};
+	} foreach _nearpersobox;
 
 	// Tent Respawn
 	_neartent = (GRLIB_mobile_respawn) select { typeOf _x == mobile_respawn && (_x distance2D player < _searchradius) && isNil {_x getVariable "GRLIB_tent_action"} };

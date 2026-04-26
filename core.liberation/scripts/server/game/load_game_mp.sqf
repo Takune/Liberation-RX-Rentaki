@@ -307,8 +307,12 @@ if (!isNil "_lrx_liberation_savegame") then {
 			[_nextbuilding, (_x select 5)] call load_object_direct;
 		};
 
+		if (_nextclass == cargo_sling_typename) then {
+			[_nextbuilding, (_x select 5)] call attach_lrx_objects;
+		};
+
 		if (_nextclass == storage_medium_typename) then {
-			{[_nextbuilding, _x] call attach_object_direct} forEach (_x select 5);
+			[_nextbuilding, (_x select 5)] call attach_lrx_objects;
 			private _drop_zone_dir = (getdir _nextbuilding);
 			private _drop_zone_pos = (getposATL _nextbuilding) vectorAdd ([[0, -5, 0], -_drop_zone_dir] call BIS_fnc_rotateVector2D);
 			private _drop_zone = createVehicle ["VR_Area_01_square_2x2_yellow_F", ([] call F_getFreePos), [], 0, "NONE"];
@@ -318,6 +322,21 @@ if (!isNil "_lrx_liberation_savegame") then {
 			_drop_zone setVectorDirAndUp [[-cos _drop_zone_dir, sin _drop_zone_dir, 0] vectorCrossProduct surfaceNormal _drop_zone_pos, surfaceNormal _drop_zone_pos];
 		};
 
+		if (_nextclass == mobile_respawn) then {
+			GRLIB_mobile_respawn pushback _nextbuilding;
+		};
+
+		if ([_nextclass, GRLIB_camo_net] call F_itemIsInClass) then {
+			_nextbuilding addEventHandler ["HandleDamage", { _this call damage_manager_static }];
+		};
+
+		if (_nextclass == medic_heal_typename && _nextclass isKindOf "Land_MedicalTent_01_base_F") then {
+			private _med_floor_class = selectRandom ["Land_MedicalTent_01_floor_light_F", "Land_MedicalTent_01_floor_dark_F"];
+			private _med_floor = createVehicle [_med_floor_class, _nextpos, [], 0, "CAN_COLLIDE"];
+			_med_floor setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
+			_med_floor setPosWorld _nextpos;
+		};
+
 		if (_owner != "") then {
 			_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
 			if (_owner != "public") then {
@@ -325,11 +344,6 @@ if (!isNil "_lrx_liberation_savegame") then {
 				_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
 			};
 		};
-
-		if (_nextclass == mobile_respawn) then {
-			GRLIB_mobile_respawn pushback _nextbuilding;
-		};
-		sleep 0.1;
 	} foreach _s2;
 
 	// Vehicles
@@ -353,7 +367,6 @@ if (!isNil "_lrx_liberation_savegame") then {
 		_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
 		_nextbuilding setPosWorld _nextpos;
-		_nextbuilding setPos (getPos _nextbuilding);
 		_buildings_created pushback _nextbuilding;
 
 		if (GRLIB_ACE_enabled) then {
@@ -389,14 +402,14 @@ if (!isNil "_lrx_liberation_savegame") then {
 		if (_nextclass in GRLIB_vehicles_light) then {
 			_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
 			if (_nextclass in list_static_weapons) then {
-				_nextbuilding setVehicleLock "DEFAULT";
+				_nextbuilding setVehicleLock "UNLOCKED";
 				{ _nextbuilding lockTurret [_x, false] } forEach (allTurrets _nextbuilding);
-				if (_nextclass in static_vehicles_AI) then {
-					_nextbuilding setVehicleLock "LOCKED";
-					_nextbuilding allowCrewInImmobile [true, false];
-					_nextbuilding setUnloadInCombat [true, false];
-					_nextbuilding setAutonomous true;
-				};
+			};
+			if (_nextclass in static_vehicles_AI) then {
+				_nextbuilding setVehicleLock "LOCKED";
+				_nextbuilding allowCrewInImmobile [true, false];
+				_nextbuilding setUnloadInCombat [true, false];
+				_nextbuilding setAutonomous true;
 			};
 			if (_nextclass in uavs_vehicles) then {
 				_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
@@ -407,7 +420,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 				[_x select 6] params [["_color_name", ""]];
 				[_x select 7] params [["_lst_a3", []]];
 				[_x select 8] params [["_lst_r3f", []]];
-				[_x select 9] params [["_lst_grl", []]];
+				[_x select 9] params [["_lst_lrx", []]];
 				[_x select 10] params [["_compo", []]];
 
 				_nextbuilding allowCrewInImmobile [true, false];
@@ -429,12 +442,11 @@ if (!isNil "_lrx_liberation_savegame") then {
 					[_nextbuilding, _lst_r3f] call load_object_direct;
 				};
 
-				if (count _lst_grl > 0) then {
-					{[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
+				if (count _lst_lrx > 0) then {
+					[_nextbuilding, _lst_lrx] call attach_lrx_objects;
 				};
 			};
 		};
-		sleep 0.1;
 	} foreach _s3;
 
 	[_buildings_created] spawn {
@@ -455,7 +467,6 @@ if (!isNil "_lrx_liberation_savegame") then {
 			if (typeOf _x in _no_damage) then { _allow_damage = false };
 			_x setDamage 0;
 			if (_allow_damage) then { _x allowDamage true };
-			sleep 0.1;
 		} foreach _list;
 	};
 

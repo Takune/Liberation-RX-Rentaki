@@ -79,6 +79,7 @@ light_vehicles = [
 	["B_T_MRAP_01_gmg_F",5,125,12,GRLIB_perm_log],
 	["B_T_Truck_01_transport_F",5,30,15,GRLIB_perm_log],
 	["B_T_Truck_01_covered_F",5,30,15,GRLIB_perm_tank],
+	["B_T_Truck_01_flatbed_F",5,30,15,GRLIB_perm_tank],
 	["B_T_LSV_01_unarmed_F",2,25,10,GRLIB_perm_inf],
 	["B_T_LSV_01_armed_F",5,100,10,GRLIB_perm_log],
 	["B_T_LSV_01_AT_F",5,125,10,GRLIB_perm_log],
@@ -95,7 +96,7 @@ heavy_vehicles = [
 	["B_T_AFV_Wheeled_01_cannon_F",15,3000,35,GRLIB_perm_max],
 	["B_T_AFV_Wheeled_01_up_cannon_F",15,3500,35,GRLIB_perm_max],
 	["B_T_MBT_01_arty_F",15,3500,30,GRLIB_perm_max],
-	["B_T_MBT_01_mlrs_F",15,3700,30,GRLIB_perm_max]
+	["B_T_MBT_01_mlrs_F",20,5000,30,GRLIB_perm_max]
 ];
 
 air_vehicles = [
@@ -134,6 +135,7 @@ static_vehicles = [
 	["B_Mortar_01_F",0,500,0,GRLIB_perm_tank],
 	["B_SAM_System_01_F",10,1500,0,GRLIB_perm_air],
 	["B_SAM_System_02_F",10,1500,0,GRLIB_perm_air],
+	["B_SAM_System_03_F",10,2500,30,GRLIB_perm_max],	
 	["B_AAA_System_01_F",10,1500,0,GRLIB_perm_max]
 ];
 

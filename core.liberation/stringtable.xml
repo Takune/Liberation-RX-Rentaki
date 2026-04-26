@@ -8,10 +8,7 @@
 			<Original>[AKH] pSiKO</Original>
 		</Key>
 		<Key ID="STR_MISSION_VERSION">
-			<Original>v2.8</Original>
-			<Chinesesimp>2.8版本</Chinesesimp>
-			<Chinese>2.8版本</Chinese>
-			<Japanese>バージョン2.8</Japanese>
+			<Original>v2.9</Original>
 		</Key>
 		<Key ID="STR_MISSION_MOTD">
 			<Original>It should not be too easy...</Original>
@@ -419,16 +416,9 @@
 			<Czech>%1 vyloženo z vozidla.</Czech>
 		</Key>
 		<Key ID="STR_BOX_CANTLOAD">
-			<Original>There is no nearby vehicle capable of carrying the ammo box.</Original>
-			<French>Aucun véhicule à proximité capable de charger la caisse de munitions.</French>
-			<German>Kein Fahrzeug in der Nähe, das die Munitionskiste tragen kann.</German>
-			<Spanish>No hay ningún vehículo cercano capaz de cagar la caja de munición</Spanish>
-			<Russian>Рядом нет техники способной перевозить ящики с боеприпасами.</Russian>
-			<Chinesesimp>附近没有能够携带弹药箱的车辆。</Chinesesimp>
-			<Chinese>附近沒有能夠攜帶彈藥箱的車輛。</Chinese>
-			<Japanese>付近に弾薬箱を積み込める車両がありません。</Japanese>
-			<Portuguese>Não há nenhum veículo próximo capaz de transportar a caixa das munições.</Portuguese>
-			<Czech>V blízkosti není žádné vozidlo, které by dokázalo převézt bednu s municí.</Czech>
+			<Original>There is no nearby vehicle capable of carrying %1.</Original>
+			<French>Aucun véhicule à proximité capable de charger %1.</French>
+			<Spanish>No hay ningún vehículo cercano capaz de cagar %1.</Spanish>
 		</Key>
 		<Key ID="STR_BOX_CANTUNLOAD">
 			<Original>Unable to unload, the location is not free.</Original>
@@ -1734,23 +1724,23 @@
 		</Key>
 		<Key ID="STR_PARAMS_MAX_SHOT">
 			<Original>Artillery cooldown</Original>
-			<French>Temps de recharge de l'artillerie</French>
+			<French>Limite d'artillerie</French>
 		</Key>
 		<Key ID="STR_PARAMS_MAX_SHOT_DESC">
 			<Original>Maximum number of artillery shots per 30 minutes</Original>
 			<French>Nombre maximal de tirs d'artillerie par 30 minutes</French>
 		</Key>
 		<Key ID="STR_PARAMS_A3W_COUNT">
-			<Original>LRX maximum concurrent Side Missions</Original>
-			<French>LRX Missions Secondaires Maximum</French>
+			<Original>Side Missions: maximum concurrent</Original>
+			<French>Missions Secondaires: maximal simultanées</French>
 		</Key>
 		<Key ID="STR_PARAMS_A3W_DELAY">
-			<Original>Delay between Side Missions (min)</Original>
-			<French>Delais entre les Missions Secondaires (min)</French>
+			<Original>Side Missions: delay between missions</Original>
+			<French>Missions Secondaires: delais entre les missions</French>
 		</Key>
 		<Key ID="STR_VULN_TIMER">
-			<Original>Enemy capture sector duration </Original>
-			<French>Durée de capture du secteur par l'ennemi </French>
+			<Original>Time to capture the sector by the enemy</Original>
+			<French>Temp de capture du secteur par l'ennemi.</French>
 		</Key>
 		<Key ID="STR_VICTORY_CONDITION">
 			<Original>Victory Condition</Original>
@@ -2010,10 +2000,10 @@
 			<Chinese>PAR：限制AI復活</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_BLEEDOUT">
-			<Original>PAR: Bleedout Timer (sec)</Original>
-			<French>PAR: Durée Attente Blessé (sec)</French>
-			<Chinesesimp>PAR：失血计时器（秒）</Chinesesimp>
-			<Chinese>PAR：失血計時器（秒）</Chinese>
+			<Original>PAR: Bleedout Timer</Original>
+			<French>PAR: Durée Attente Blessé</French>
+			<Chinesesimp>PAR：失血计时器</Chinesesimp>
+			<Chinese>PAR：失血計時器</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_GRAVE">
 			<Original>PAR: Grave + Stuff in a box</Original>
@@ -2306,6 +2296,9 @@
 			<Japanese>野生動物</Japanese>
 			<Portuguese>Habilitar o Gerenciador de Vida Selvagem</Portuguese>
 			<Czech>Povolte divoké zvěře</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_FACILITIES">
+			<Original>Enable the PNJ Facilities</Original>
 		</Key>
 		<Key ID="STR_PARAM_PATROL">
 			<Original>Enable the Patrol Manager</Original>
@@ -3348,52 +3341,26 @@
 			<Chinese>自動保存計时器</Chinese>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM0">
-			<Original>10 minutes delay</Original>
-			<French> 10 minutes de délai</French>
-			<Chinesesimp>10分钟间隔</Chinesesimp>
-			<Chinese>10分鐘間隔</Chinese>
-			<Portuguese>10 minutos de atraso</Portuguese>
-			<Czech>za 10 minut Vymazat</Czech>
+			<Original>%1 seconds</Original>
+			<French>%1 secondes</French>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM1">
-			<Original>15 minutes delay</Original>
-			<French> 15 minutes de délai</French>
-			<Chinesesimp>15分钟间隔</Chinesesimp>
-			<Chinese>15分鐘間隔</Chinese>
-			<Portuguese>15 minutos de atraso</Portuguese>
-			<Czech>za 15 minut Vymazat</Czech>
+			<Original>%1 minutes</Original>
+			<French>%1 minutes</French>
+			<Russian>%1 минут</Russian>
+			<Chinesesimp>%1 分钟间隔</Chinesesimp>
+			<Chinese>%1 分鐘間隔</Chinese>
+			<Portuguese>%1 minutos</Portuguese>
+			<Czech>%1 minutt</Czech>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM2">
-			<Original>20 minutes delay</Original>
-			<French> 20 minutes de délai</French>
-			<Chinesesimp>20分钟间隔</Chinesesimp>
-			<Chinese>20分鐘間隔</Chinese>
-			<Portuguese>20 minutos de atraso</Portuguese>
-			<Czech>za 20 minut Vymazat</Czech>
-		</Key>
-		<Key ID="STR_CLEANUP_PARAM3">
-			<Original>30 minutes delay</Original>
-			<French> 30 minutes de délai</French>
-			<Chinesesimp>30分钟间隔</Chinesesimp>
-			<Chinese>30分鐘間隔</Chinese>
-			<Portuguese>30 minutos de atraso</Portuguese>
-			<Czech>za 30 minut vymazat</Czech>
-		</Key>
-		<Key ID="STR_CLEANUP_PARAM4">
-			<Original>1 hour delay</Original>
-			<French>1 heure de délai</French>
-			<Chinesesimp>1小时间隔</Chinesesimp>
-			<Chinese>1小時間隔</Chinese>
-			<Portuguese>1 hora de atraso</Portuguese>
-			<Czech>za 1 hodinu vymazat</Czech>
-		</Key>
-		<Key ID="STR_CLEANUP_PARAM5">
-			<Original>2 hours delay</Original>
-			<French>2 heures de délai</French>
-			<Chinesesimp>2小时间隔</Chinesesimp>
-			<Chinese>2小時間隔</Chinese>
-			<Portuguese>2 horas de atraso</Portuguese>
-			<Czech>za 2 hodiny vymazat</Czech>
+			<Original>%1 hour(s)</Original>
+			<French>%1 heure(s)</French>
+			<Russian>%1 час(а)</Russian>
+			<Chinesesimp>%1 小时间隔</Chinesesimp>
+			<Chinese>%1 小時間隔</Chinese>
+			<Portuguese>%1 hora(s)</Portuguese>
+			<Czech>%1 hodin(u/y)</Czech>
 		</Key>
 		<Key ID="STR_SORRY">
 			<Original>Sorry!</Original>
@@ -5093,7 +5060,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Cost: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Reward: OPFOR alert level reduced by 30%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Reward: OPFOR alert level reduced by 30%%&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Original>
@@ -5108,7 +5075,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Coût: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Récompense: niveau d'alerte de l'OPFOR réduit de 30%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Récompense: niveau d'alerte de l'OPFOR réduit de 30%%&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</French>
@@ -5123,7 +5090,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Kosten: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Belohnung: OPFOR Alarmstatus wird um 30% reduziert&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Belohnung: OPFOR Alarmstatus wird um 30%% reduziert&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</German>
@@ -5138,7 +5105,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Cost: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Recompensa: nivel de alerta del OPFOR reducido en un 30%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Recompensa: nivel de alerta del OPFOR reducido en un 30%%&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Spanish>
@@ -5149,7 +5116,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Требуется: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Награда: уровень тревоги OPFOR уменьшится на 30%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Награда: уровень тревоги OPFOR уменьшится на 30%%&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Russian>
@@ -5164,7 +5131,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;花费: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;奖励: OPFOR 警戒级别降低30% &lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;奖励: OPFOR 警戒级别降低30%% &lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Chinesesimp>
@@ -5179,7 +5146,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;花費: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;獎勵: OPFOR 警戒級別降低30% &lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;獎勵: OPFOR 警戒級別降低30%% &lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Chinese>
@@ -5194,7 +5161,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;コスト: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;報酬: 敵の警戒レベル30%減少&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;報酬: 敵の警戒レベル30%%減少&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Japanese>
@@ -5209,7 +5176,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Custo: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Recompensa: nível de alerta OPFOR reduzido em 30%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Recompensa: nível de alerta OPFOR reduzido em 30%%&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Portuguese>
@@ -5224,7 +5191,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Náklady: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Odměna: Úroveň nasranosti nepřítele snížena o 30 %&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Odměna: Úroveň nasranosti nepřítele snížena o 30%%&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Czech>
@@ -5252,7 +5219,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Cost: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Reward: OPFOR alert level reduced by 15%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Reward: OPFOR alert level reduced by 15%%&lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;Side reward: All the ammunition you can retrieve.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -5269,7 +5236,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Coût: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Récompense: niveau d'alerte de l'OPFOR réduit de 15%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Récompense: niveau d'alerte de l'OPFOR réduit de 15%%&lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;Récompense secondaire: toutes les munitions que vous pourrez récupérer.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -5286,7 +5253,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Kosten: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Belohnung: OPFOR Alarmstatus wird um 15% reduziert&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Belohnung: OPFOR Alarmstatus wird um 15%% reduziert&lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;Seiten Belohnung: Soviel Munition wie Sie erbeuten können.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -5303,7 +5270,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Требуется: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Награда: уровень тревоги OPFOR уменьшится на 15%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Награда: уровень тревоги OPFOR уменьшится на 15%%&lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;Вторичная награда: Всё вооружение, которое можно получить за утилизацию груза конвоя.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -5320,7 +5287,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;花费: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;奖励: OPFOR 警戒级别降低15% &lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;奖励: OPFOR 警戒级别降低15%% &lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;支线奖励: 所有你能找到的弹药资源。&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -5337,7 +5304,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;花費: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;獎勵: OPFOR 警戒級別降低15% &lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;獎勵: OPFOR 警戒級別降低15%% &lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;支線獎勵: 所有你能找到的彈藥資源。 &lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -5354,7 +5321,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;コスト: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;メイン報酬: 敵の警戒レベル15%減少。&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;メイン報酬: 敵の警戒レベル15%%減少。&lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;サイド報酬: 現地で回収できる弾薬。&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -5371,7 +5338,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Custo: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Recompensa: nível de alerta OPFOR reduzido em 15%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Recompensa: nível de alerta OPFOR reduzido em 15%%&lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;Recompensa adicional: Toda a munição que você conseguir recuperar.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -6055,12 +6022,6 @@
 			<Chinesesimp>UI - 在地图上显示队友</Chinesesimp>
 			<Chinese>UI - 在地圖上顯示隊友</Chinese>
 		</Key>
-		<Key ID="STR_PERSISTENT_MODE">
-			<Original>Server in Persistent Mode</Original>
-			<French>Serveur en Mode Persistant.</French>
-			<Chinesesimp>服务器处于持续模式</Chinesesimp>
-			<Chinese>服務器處於持續模式</Chinese>
-		</Key>
 		<Key ID="STR_KEEP_SCORE">
 			<Original>Keep the Basic Players datas (score, permissions)</Original>
 			<French>Garder les données de Base (score, permissions)</French>
@@ -6074,22 +6035,20 @@
 			<Chinese>地圖重啓時保留玩家數據（小隊、武器庫、虛擬車庫）</Chinese>
 		</Key>
 		<Key ID="STR_PARAM_RESPAWN">
-			<Original>PAR: Respawn button Timer (sec)</Original>
-			<French>PAR: Attente Bouton Respawn (sec)</French>
-			<Chinesesimp>PAR：重生按钮计时器（秒）</Chinesesimp>
-			<Chinese>PAR：重生按鈕計時器（秒）</Chinese>
+			<Original>PAR: Respawn button Timer</Original>
+			<French>PAR: Attente Bouton Respawn</French>
+			<Chinesesimp>PAR：重生按钮计时器</Chinesesimp>
+			<Chinese>PAR：重生按鈕計時器</Chinese>
 		</Key>
 		<Key ID="STR_RESPAWN_CD">
-			<Original>Cooldown if player respawn too fast (min)</Original>
-			<French>Attente si le joueur réapparaît trop rapidement (min)</French>
-			<Chinesesimp>玩家重生过快时的冷却时间（分钟）</Chinesesimp>
-			<Chinese>玩家重生過快時的冷卻時間（分鐘）</Chinese>
+			<Original>Cooldown if player respawn too fast</Original>
+			<French>Attente si le joueur réapparaît trop rapidement</French>
+			<Chinesesimp>玩家重生过快时的冷却时间</Chinesesimp>
+			<Chinese>玩家重生過快時的冷卻時間</Chinese>
 		</Key>
 		<Key ID="STR_PARAM_SECTOR_DESPAWN">
-			<Original>Clear unattacked Sectors (min)</Original>
-			<French>Nettoyer secteurs non attaqués (min)</French>
-			<Chinesesimp>清理未被攻击的区域（分钟）</Chinesesimp>
-			<Chinese>清理未被攻擊的區域（分鐘）</Chinese>
+			<Original>Duration of activity of an Attacked Sector</Original>
+			<French>Durée d'activité d'un Secteur Attaqué</French>
 		</Key>
 		<Key ID="STR_REDEPLOY">
 			<Original>Allow Redeploy</Original>
@@ -8466,56 +8425,56 @@
 		<!-- welcome.sqf -->
 		<Key ID="STR_UI_WELCOME_MSG">
 			<Original>
-				Welcome &lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
+				Welcome, %7&lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
 				Your Rank : &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				Your Score : &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				Your Credit : &lt;t color='#800000'&gt;%4&lt;/t&gt; AMMO &lt;br/&gt;&lt;br/&gt;
 				Your Reputation with Civilians is &lt;t color='%5'>%6&lt;/t&gt;
 			</Original>
 			<French>
-				Bienvenue &lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
+				Bienvenue, %7&lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
 				Votre grade : &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				Votre score : &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				Vos crédits : &lt;t color='#800000'&gt;%4&lt;/t&gt; MUNITIONS &lt;br/&gt;&lt;br/&gt;
 				Votre réputation auprès des civils est &lt;t color='%5'>%6&lt;/t&gt;
 			</French>
 			<German>
-				Willkommen &lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Willkommen, %7&lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
 				Dein Rang: &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				Dein Punktestand: &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				Dein Guthaben: &lt;t color='#800000'&gt;%4&lt;/t&gt; MUNITION &lt;br/&gt;&lt;br/&gt;
 				Dein Ansehen bei Zivilisten ist &lt;t color='%5'>%6&lt;/t&gt;
 			</German>
 			<Spanish>
-				Bienvenido &lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Bienvenido, %7&lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
 				Tu Rango: &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				Tu Puntuación: &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				Tu Crédito: &lt;t color='#800000'&gt;%4&lt;/t&gt; MUNICIÓN &lt;br/&gt;&lt;br/&gt;
 				Tu Reputación con Civiles es &lt;t color='%5'>%6&lt;/t&gt;
 			</Spanish>
 			<Russian>
-				Добро пожаловать, &lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Добро пожаловать, %7&lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
 				Ваш ранг: &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				Ваш счёт: &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				Ваши ресурсы: &lt;t color='#800000'&gt;%4&lt;/t&gt; БОЕПРИПАСЫ&lt;br/&gt;&lt;br/&gt;
 				Ваша репутация среди гражданских: &lt;t color='%5'>%6&lt;/t&gt;
 			</Russian>
 			<Chinesesimp>
-				欢迎 &lt;t color='#00008f'&gt;%1&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;
+				欢迎 %7&lt;t color='#00008f'&gt;%1&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;
 				你的军衔：&lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				你的得分：&lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				你的弹药：&lt;t color='#800000'&gt;%4&lt;/t&gt; 点&lt;br/&gt;&lt;br/&gt;
 				你在平民中的声望为 &lt;t color='%5'>%6&lt;/t&gt;
 			</Chinesesimp>
 			<Chinese>
-				歡迎 &lt;t color='#00008f'&gt;%1&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;
+				歡迎 %7&lt;t color='#00008f'&gt;%1&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;
 				你的軍階：&lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				你的得分：&lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				你的彈藥：&lt;t color='#800000'&gt;%4&lt;/t&gt; 點&lt;br/&gt;&lt;br/&gt;
 				你在平民中的聲望為 &lt;t color='%5'>%6&lt;/t&gt;
 			</Chinese>
 			<Japanese>
-				ようこそ &lt;t color='#00008f'&gt;%1&lt;/t&gt; さん！&lt;br/&gt;&lt;br/&gt;
+				ようこそ %7&lt;t color='#00008f'&gt;%1&lt;/t&gt; さん！&lt;br/&gt;&lt;br/&gt;
 				階級：&lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				スコア：&lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				弾薬ポイント：&lt;t color='#800000'&gt;%4&lt;/t&gt; &lt;br/&gt;&lt;br/&gt;
@@ -9857,13 +9816,8 @@
 			<Czech>Povolit nasazovací cinematik</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_OPFORCAP_DESC">
-			<Original>Sets the enemy force cap to limit maximum enemy units.</Original>
-			<Russian>Устанавливает максимальное ограничение на количество вражеских подразделений.</Russian>
-			<French>Définit le plafond de forces ennemies pour limiter le nombre maximal d'unités ennemies.</French>
-			<Chinesesimp>设置敌方部队上限以限制最大敌军单位数。</Chinesesimp>
-			<Chinese>設置敵軍部隊上限以限制最大敵軍單位數。</Chinese>
-			<Portuguese>Define o limite de forças inimigas para restringir o número máximo de unidades inimigas.</Portuguese>
-			<Czech>Nastavuje strop nepřátelských sil pro omezení maximálního počtu jednotek nepřítele.</Czech>
+			<Original>Configure enemy patrol presence.</Original>
+
 		</Key>
 		<Key ID="STR_PARAMS_OPFORCAP_OPT0">
 			<Original>Limit enemy force cap to 100 units</Original>
@@ -10420,40 +10374,22 @@
 			<Czech>Zakázat pasivní příjem</Czech>
 		</Key>
 		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_OPT0">
-			<Original>Delay between payouts: 20 minutes</Original>
-			<Russian>Задержка между выплатами: 20 минут</Russian>
-			<French>Délai entre paiements : 20 minutes</French>
-			<Chinesesimp>支付间隔：20分钟</Chinesesimp>
-			<Chinese>支付間隔：20分鐘</Chinese>
-			<Portuguese>Atraso entre pagamentos: 20 minutos</Portuguese>
-			<Czech>Prodleva mezi výplatami: 20 minut</Czech>
+			<Original>Delay between payouts: %1 minutes</Original>
+			<Russian>Задержка между выплатами: %1 минут</Russian>
+			<French>Délai entre paiements : %1 </French>
+			<Chinesesimp>支付间隔：%1分钟</Chinesesimp>
+			<Chinese>支付間隔：%1分鐘</Chinese>
+			<Portuguese>Atraso entre pagamentos: %1 minutos</Portuguese>
+			<Czech>Prodleva mezi výplatami: %1 minut</Czech>
 		</Key>
 		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_OPT1">
-			<Original>Delay between payouts: 30 minutes</Original>
-			<Russian>Задержка между выплатами: 30 минут</Russian>
-			<French>Délai entre paiements : 30 minutes</French>
-			<Chinesesimp>支付间隔：30分钟</Chinesesimp>
-			<Chinese>支付間隔：30分鐘</Chinese>
-			<Portuguese>Atraso entre pagamentos: 30 minutos</Portuguese>
-			<Czech>Prodleva mezi výplatami: 30 minut</Czech>
-		</Key>
-		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_OPT2">
-			<Original>Delay between payouts: 1 hour</Original>
-			<Russian>Задержка между выплатами: 1 час</Russian>
-			<French>Délai entre paiements : 1 heure</French>
-			<Chinesesimp>支付间隔：1小时</Chinesesimp>
-			<Chinese>支付間隔：1小時</Chinese>
-			<Portuguese>Atraso entre pagamentos: 1 hora</Portuguese>
-			<Czech>Prodleva mezi výplatami: 1 hodina</Czech>
-		</Key>
-		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_OPT3">
-			<Original>Delay between payouts: 2 hours</Original>
-			<Russian>Задержка между выплатами: 2 часа</Russian>
-			<French>Délai entre paiements : 2 heures</French>
-			<Chinesesimp>支付间隔：2小时</Chinesesimp>
-			<Chinese>支付間隔：2小時</Chinese>
-			<Portuguese>Atraso entre pagamentos: 2 horas</Portuguese>
-			<Czech>Prodleva mezi výplatami: 2 hodiny</Czech>
+			<Original>Delay between payouts: %1 hour(s)</Original>
+			<Russian>Задержка между выплатами: %1 час(a)</Russian>
+			<French>Délai entre paiements : %1 heure(s)</French>
+			<Chinesesimp>支付间隔：%1小时</Chinesesimp>
+			<Chinese>支付間隔：%1小時</Chinese>
+			<Portuguese>Atraso entre pagamentos: %1 hora(s)</Portuguese>
+			<Czech>Prodleva mezi výplatami: %1 hodin(u/y)</Czech>
 		</Key>
 		<Key ID="STR_PARAM_PASSIVE_INCOME_AMMOUNT_DESC">
 			<Original>Defines the amount of passive income awarded per interval.</Original>
@@ -10788,14 +10724,17 @@
 			<Portuguese>Ativar aparição de fauna</Portuguese>
 			<Czech>Povolit spawn divoké zvěře</Czech>
 		</Key>
+		<Key ID="STR_PARAMS_FACILITIES_DESC">
+			<Original>Create and manage SHOP/SELL/REPAIR services.</Original>
+		</Key>
+		<Key ID="STR_PARAMS_FACILITIES_OPT0">
+			<Original>Disable all Facilities</Original>
+		</Key>
+		<Key ID="STR_PARAMS_FACILITIES_OPT1">
+			<Original>Enable all Facilities</Original>
+		</Key>
 		<Key ID="STR_PARAMS_CIVILIANS_DESC">
-			<Original>Configures civilian presence and behavior settings.</Original>
-			<Russian>Настраивает присутствие и поведение гражданских.</Russian>
-			<French>Configure la présence et le comportement des civils.</French>
-			<Chinesesimp>配置平民出现及行为设置。</Chinesesimp>
-			<Chinese>配置平民出現及行為設置。</Chinese>
-			<Portuguese>Configura presença e comportamento de civis.</Portuguese>
-			<Czech>Nastavuje přítomnost a chování civilistů.</Czech>
+			<Original>Configure civilian presence.</Original>
 		</Key>
 		<Key ID="STR_PARAMS_CIVILIANS_OPT0">
 			<Original>Disable civilians</Original>
@@ -11293,58 +11232,13 @@
 			<Czech>Neomezená oživení AI</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT1">
-			<Original>Up to 3 AI revives</Original>
-			<Russian>До 3 воскрешений ИИ</Russian>
-			<French>Jusqu'à 3 réanimations d'IA</French>
-			<Chinesesimp>最多3次AI复活</Chinesesimp>
-			<Chinese>最多3次AI復活</Chinese>
-			<Portuguese>Até 3 revives de IA</Portuguese>
-			<Czech>Až 3 oživení AI</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT2">
-			<Original>Up to 5 AI revives</Original>
-			<Russian>До 5 воскрешений ИИ</Russian>
-			<French>Jusqu'à 5 réanimations d'IA</French>
-			<Chinesesimp>最多5次AI复活</Chinesesimp>
-			<Chinese>最多5次AI復活</Chinese>
-			<Portuguese>Até 5 revives de IA</Portuguese>
-			<Czech>Až 5 oživení AI</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT3">
-			<Original>Up to 7 AI revives</Original>
-			<Russian>До 7 воскрешений ИИ</Russian>
-			<French>Jusqu'à 7 réanimations d'IA</French>
-			<Chinesesimp>最多7次AI复活</Chinesesimp>
-			<Chinese>最多7次AI復活</Chinese>
-			<Portuguese>Até 7 revives de IA</Portuguese>
-			<Czech>Až 7 oživení AI</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT4">
-			<Original>Up to 10 AI revives</Original>
-			<Russian>До 10 воскрешений ИИ</Russian>
-			<French>Jusqu'à 10 réanimations d'IA</French>
-			<Chinesesimp>最多10次AI复活</Chinesesimp>
-			<Chinese>最多10次AI復活</Chinese>
-			<Portuguese>Até 10 revives de IA</Portuguese>
-			<Czech>Až 10 oživení AI</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT5">
-			<Original>Up to 15 AI revives</Original>
-			<Russian>До 15 воскрешений ИИ</Russian>
-			<French>Jusqu'à 15 réanimations d'IA</French>
-			<Chinesesimp>最多15次AI复活</Chinesesimp>
-			<Chinese>最多15次AI復活</Chinese>
-			<Portuguese>Até 15 revives de IA</Portuguese>
-			<Czech>Až 15 oživení AI</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT6">
-			<Original>Up to 20 AI revives</Original>
-			<Russian>До 20 воскрешений ИИ</Russian>
-			<French>Jusqu'à 20 réanimations d'IA</French>
-			<Chinesesimp>最多20次AI复活</Chinesesimp>
-			<Chinese>最多20次AI復活</Chinese>
-			<Portuguese>Até 20 revives de IA</Portuguese>
-			<Czech>Až 20 oživení AI</Czech>
+			<Original>Up to %1 revives</Original>
+			<Russian>До %1 воскрешений ИИ</Russian>
+			<French>Jusqu'à %1 réanimations</French>
+			<Chinesesimp>最多%1次AI复活</Chinesesimp>
+			<Chinese>最多%1次AI復活</Chinese>
+			<Portuguese>Até %1 revives</Portuguese>
+			<Czech>Až %1 oživení</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_BLEEDOUT_DESC">
 			<Original>Defines the bleed-out time (in seconds) for downed players.</Original>
@@ -11356,58 +11250,13 @@
 			<Czech>Nastavuje čas do vykrvení (v sekundách) pro zraněné hráče.</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT0">
-			<Original>Bleed-out time: 100 seconds</Original>
-			<Russian>Время истечения: 100 секунд</Russian>
-			<French>Temps d'agonie : 100 secondes</French>
-			<Chinesesimp>流血结束时间：100秒</Chinesesimp>
-			<Chinese>流血結束時間：100秒</Chinese>
-			<Portuguese>Tempo de sangramento: 100 segundos</Portuguese>
-			<Czech>Čas do vykrvení: 100 s</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT1">
-			<Original>Bleed-out time: 200 seconds</Original>
-			<Russian>Время истечения: 200 секунд</Russian>
-			<French>Temps d'agonie : 200 secondes</French>
-			<Chinesesimp>流血结束时间：200秒</Chinesesimp>
-			<Chinese>流血結束時間：200秒</Chinese>
-			<Portuguese>Tempo de sangramento: 200 segundos</Portuguese>
-			<Czech>Čas do vykrvení: 200 s</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT2">
-			<Original>Bleed-out time: 300 seconds</Original>
-			<Russian>Время истечения: 300 секунд</Russian>
-			<French>Temps d'agonie : 300 secondes</French>
-			<Chinesesimp>流血结束时间：300秒</Chinesesimp>
-			<Chinese>流血結束時間：300秒</Chinese>
-			<Portuguese>Tempo de sangramento: 300 segundos</Portuguese>
-			<Czech>Čas do vykrvení: 300 s</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT3">
-			<Original>Bleed-out time: 400 seconds</Original>
-			<Russian>Время истечения: 400 секунд</Russian>
-			<French>Temps d'agonie : 400 secondes</French>
-			<Chinesesimp>流血结束时间：400秒</Chinesesimp>
-			<Chinese>流血結束時間：400秒</Chinese>
-			<Portuguese>Tempo de sangramento: 400 segundos</Portuguese>
-			<Czech>Čas do vykrvení: 400 s</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT4">
-			<Original>Bleed-out time: 500 seconds</Original>
-			<Russian>Время истечения: 500 секунд</Russian>
-			<French>Temps d'agonie : 500 secondes</French>
-			<Chinesesimp>流血结束时间：500秒</Chinesesimp>
-			<Chinese>流血結束時間：500秒</Chinese>
-			<Portuguese>Tempo de sangramento: 500 segundos</Portuguese>
-			<Czech>Čas do vykrvení: 500 s</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT5">
-			<Original>Bleed-out time: 600 seconds</Original>
-			<Russian>Время истечения: 600 секунд</Russian>
-			<French>Temps d'agonie : 600 secondes</French>
-			<Chinesesimp>流血结束时间：600秒</Chinesesimp>
-			<Chinese>流血結束時間：600秒</Chinese>
-			<Portuguese>Tempo de sangramento: 600 segundos</Portuguese>
-			<Czech>Čas do vykrvení: 600 s</Czech>
+			<Original>Bleed-out time: %1 seconds</Original>
+			<Russian>Время истечения: %1 секунд</Russian>
+			<French>Temps d'agonie : %1 secondes</French>
+			<Chinesesimp>流血结束时间：%1秒</Chinesesimp>
+			<Chinese>流血結束時間：%1秒</Chinese>
+			<Portuguese>Tempo de sangramento: %1 segundos</Portuguese>
+			<Czech>Čas do vykrvení: %1 seconds</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_GRAVE_DESC">
 			<Original>Enables or disables grave mechanics following player death.</Original>
@@ -11584,58 +11433,13 @@
 			<Czech>Nastavuje prodlevu respawnu (v sekundách) po smrti hráče.</Czech>
 		</Key>
 		<Key ID="STR_RESPAWN_OPT0">
-			<Original>Respawn delay: 5 seconds</Original>
-			<Russian>Задержка возрождения: 5 секунд</Russian>
-			<French>Délai de réapparition : 5 secondes</French>
-			<Chinesesimp>重生延迟：5秒</Chinesesimp>
-			<Chinese>重生延遲：5秒</Chinese>
-			<Portuguese>Atraso de respawn: 5 segundos</Portuguese>
-			<Czech>Prodleva respawnu: 5 s</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_OPT1">
-			<Original>Respawn delay: 10 seconds</Original>
-			<Russian>Задержка возрождения: 10 секунд</Russian>
-			<French>Délai de réapparition : 10 secondes</French>
-			<Chinesesimp>重生延迟：10秒</Chinesesimp>
-			<Chinese>重生延遲：10秒</Chinese>
-			<Portuguese>Atraso de respawn: 10 segundos</Portuguese>
-			<Czech>Prodleva respawnu: 10 s</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_OPT2">
-			<Original>Respawn delay: 20 seconds</Original>
-			<Russian>Задержка возрождения: 20 секунд</Russian>
-			<French>Délai de réapparition : 20 secondes</French>
-			<Chinesesimp>重生延迟：20秒</Chinesesimp>
-			<Chinese>重生延遲：20秒</Chinese>
-			<Portuguese>Atraso de respawn: 20 segundos</Portuguese>
-			<Czech>Prodleva respawnu: 20 s</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_OPT3">
-			<Original>Respawn delay: 25 seconds</Original>
-			<Russian>Задержка возрождения: 25 секунд</Russian>
-			<French>Délai de réapparition : 25 secondes</French>
-			<Chinesesimp>重生延迟：25秒</Chinesesimp>
-			<Chinese>重生延遲：25秒</Chinese>
-			<Portuguese>Atraso de respawn: 25 segundos</Portuguese>
-			<Czech>Prodleva respawnu: 25 s</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_OPT4">
-			<Original>Respawn delay: 30 seconds</Original>
-			<Russian>Задержка возрождения: 30 секунд</Russian>
-			<French>Délai de réapparition : 30 secondes</French>
-			<Chinesesimp>重生延迟：30秒</Chinesesimp>
-			<Chinese>重生延遲：30秒</Chinese>
-			<Portuguese>Atraso de respawn: 30 segundos</Portuguese>
-			<Czech>Prodleva respawnu: 30 s</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_OPT5">
-			<Original>Respawn delay: 60 seconds</Original>
-			<Russian>Задержка возрождения: 60 секунд</Russian>
-			<French>Délai de réapparition : 60 secondes</French>
-			<Chinesesimp>重生延迟：60秒</Chinesesimp>
-			<Chinese>重生延遲：60秒</Chinese>
-			<Portuguese>Atraso de respawn: 60 segundos</Portuguese>
-			<Czech>Prodleva respawnu: 60 s</Czech>
+			<Original>Respawn delay: %1 seconds</Original>
+			<Russian>Задержка возрождения: %1 секунд</Russian>
+			<French>Délai de réapparition : %1 secondes</French>
+			<Chinesesimp>重生延迟：%1秒</Chinesesimp>
+			<Chinese>重生延遲：%1秒</Chinese>
+			<Portuguese>Atraso de respawn: %1 segundos</Portuguese>
+			<Czech>Prodleva respawnu: %1 seconds</Czech>
 		</Key>
 		<Key ID="STR_PARAM_SQUAD_SIZE_START_DESC">
 			<Original>Defines the starting squad size available to players.</Original>
@@ -12041,15 +11845,6 @@
 			<Chinese>如果啟用，則強制玩家使用預定義配置。</Chinese>
 			<Portuguese>Força os jogadores a usar um loadout predefinido se ativado.</Portuguese>
 			<Czech>Nutí hráče používat přednastavené vybavení, pokud je povoleno.</Czech>
-		</Key>
-		<Key ID="STR_FORCE_LOADOUT_OPT0">
-			<Original>Disable forced loadout</Original>
-			<Russian>Отключить принудительный комплект</Russian>
-			<French>Désactiver le loadout forcé</French>
-			<Chinesesimp>禁用强制加载配置</Chinesesimp>
-			<Chinese>禁用強制加載配置</Chinese>
-			<Portuguese>Desativar loadout forçado</Portuguese>
-			<Czech>Zakázat vynucené vybavení</Czech>
 		</Key>
 		<Key ID="STR_FORCE_LOADOUT_OPT1">
 			<Original>Force loadout Preset 1</Original>
@@ -12832,22 +12627,15 @@
 			<Czech>Poloměr sektoru: 2000 m</Czech>
 		</Key>
 		<Key ID="STR_PARAM_SECTOR_DESPAWN_DESC">
-			<Original>Sets the time multiplier for sector despawn delays, affecting sector persistence.</Original>
-			<Russian>Устанавливает множитель времени для задержек исчезновения секторов, влияя на их сохранение.</Russian>
-			<French>Définit le multiplicateur de temps pour les délais de disparition des secteurs, affectant leur persistance.</French>
-			<Chinesesimp>设置扇区消失延迟的时间乘数，影响扇区持久性。</Chinesesimp>
-			<Chinese>設置扇區消失延遲的時間乘數，影響扇區持久性。</Chinese>
-			<Portuguese>Define o multiplicador de tempo para atrasos de desaparecimento de setores, afetando a persistência.</Portuguese>
-			<Czech>Nastavuje časový násobitel pro zpoždění zmizení sektorů, ovlivňující jejich perzistenci.</Czech>
+			<Original>Defines the duration for which an Attacked Sector remains active when there are no more friendly units.</Original>
+			<French>Définit la durée pendant laquelle un Secteur Attaqué reste actif quand il n'y à plus d'unitées amies.</French>
 		</Key>
 		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT0">
-			<Original>Sector despawn after 3 hours</Original>
-			<Russian>Исчезновение сектора через 3 часа</Russian>
-			<French>Disparition du secteur après 3 heures</French>
-			<Chinesesimp>扇区在 3 小时后消失</Chinesesimp>
-			<Chinese>扇區在 3 小時後消失</Chinese>
-			<Portuguese>Desaparecimento do setor após 3 horas</Portuguese>
-			<Czech>Zmizení sektoru po 3 hodinách</Czech>
+			<Original>Sector despawn after %1 minutes</Original>
+			<French>Disparition du secteur après %1 minutes</French>
+			<Russian>Исчезновение сектора через %1 минут</Russian>
+			<Portuguese>Desaparecimento do setor após %1 minutos</Portuguese>
+			<Czech>Zmizení sektoru po %1 minutt</Czech>
 		</Key>
 		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT1">
 			<Original>Sector despawn after 6 hours</Original>
@@ -12857,42 +12645,6 @@
 			<Chinese>扇區在 6 小時後消失</Chinese>
 			<Portuguese>Desaparecimento do setor após 6 horas</Portuguese>
 			<Czech>Zmizení sektoru po 6 hodinách</Czech>
-		</Key>
-		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT2">
-			<Original>Sector despawn after 8 hours</Original>
-			<Russian>Исчезновение сектора через 8 часов</Russian>
-			<French>Disparition du secteur après 8 heures</French>
-			<Chinesesimp>扇区在 8 小时后消失</Chinesesimp>
-			<Chinese>扇區在 8 小時後消失</Chinese>
-			<Portuguese>Desaparecimento do setor após 8 horas</Portuguese>
-			<Czech>Zmizení sektoru po 8 hodinách</Czech>
-		</Key>
-		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT3">
-			<Original>Sector despawn after 12 hours</Original>
-			<Russian>Исчезновение сектора через 12 часов</Russian>
-			<French>Disparition du secteur après 12 heures</French>
-			<Chinesesimp>扇区在 12 小时后消失</Chinesesimp>
-			<Chinese>扇區在 12 小時後消失</Chinese>
-			<Portuguese>Desaparecimento do setor após 12 horas</Portuguese>
-			<Czech>Zmizení sektoru po 12 hodinách</Czech>
-		</Key>
-		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT4">
-			<Original>Sector despawn after 16 hours</Original>
-			<Russian>Исчезновение сектора через 16 часов</Russian>
-			<French>Disparition du secteur após 16 heures</French>
-			<Chinesesimp>扇区在 16 小时后消失</Chinesesimp>
-			<Chinese>扇區在 16 小時後消失</Chinese>
-			<Portuguese>Desaparecimento do setor após 16 horas</Portuguese>
-			<Czech>Zmizení sektoru po 16 hodinách</Czech>
-		</Key>
-		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT5">
-			<Original>Sector despawn after 20 hours</Original>
-			<Russian>Исчезновение сектора через 20 часов</Russian>
-			<French>Disparition du secteur depois de 20 heures</French>
-			<Chinesesimp>扇区在 20 小时后消失</Chinesesimp>
-			<Chinese>扇區在 20 小時後消失</Chinese>
-			<Portuguese>Desaparecimento do setor após 20 horas</Portuguese>
-			<Czech>Zmizení sektoru po 20 hodinách</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_BUILDING_RATIO_DESC">
 			<Original>Multiplier for how many units are placed in buildings</Original>
@@ -13058,62 +12810,35 @@
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM_OPT0">
 			<Original>Do not clean up vehicles</Original>
-			<Russian>Не удалять транспортные средства</Russian>
 			<French>Ne pas supprimer les véhicules</French>
+			<Russian>Не удалять транспортные средства</Russian>
 			<Chinesesimp>不移除车辆。</Chinesesimp>
 			<Chinese>不移除車輛。</Chinese>
 			<Portuguese>Não remover veículos.</Portuguese>
 			<Czech>Neodstraňovat vozidla.</Czech>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM_OPT1">
-			<Original>Clean up after 15 minutes</Original>
-			<Russian>Удалить через 15 минут</Russian>
-			<French>Supprimer après 15 minutes</French>
-			<Chinesesimp>15 分钟后移除。</Chinesesimp>
-			<Chinese>15 分鐘後移除。</Chinese>
-			<Portuguese>Remover após 15 minutos.</Portuguese>
-			<Czech>Odstranit po 15 minutách.</Czech>
+			<Original>Clean up after %1 minutes</Original>
+			<French>Supprimer après %1 minutes</French>
+			<Russian>Удалить через %1 минут</Russian>
+			<Chinesesimp>%1 分钟后移除。</Chinesesimp>
+			<Chinese>%1 分鐘後移除。</Chinese>
+			<Portuguese>Remover após %1 minutos.</Portuguese>
+			<Czech>Odstranit po %1 minutách.</Czech>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM_OPT2">
-			<Original>Clean up after 20 minutes</Original>
-			<Russian>Удалить через 20 минут</Russian>
-			<French>Supprimer après 20 minutes</French>
-			<Chinesesimp>20 分钟后移除。</Chinesesimp>
-			<Chinese>20 分鐘後移除。</Chinese>
-			<Portuguese>Remover após 20 minutos.</Portuguese>
-			<Czech>Odstranit po 20 minutách.</Czech>
-		</Key>
-		<Key ID="STR_CLEANUP_PARAM_OPT3">
-			<Original>Clean up after 30 minutes</Original>
-			<Russian>Удалить через 30 минут</Russian>
-			<French>Supprimer après 30 minutes</French>
-			<Chinesesimp>30 分钟后移除。</Chinesesimp>
-			<Chinese>30 分鐘後移除。</Chinese>
-			<Portuguese>Remover após 30 minutos.</Portuguese>
-			<Czech>Odstranit po 30 minutách.</Czech>
-		</Key>
-		<Key ID="STR_CLEANUP_PARAM_OPT4">
-			<Original>Clean up after 1 hour</Original>
-			<Russian>Удалить через 1 час</Russian>
-			<French>Supprimer après 1 heure</French>
-			<Chinesesimp>1 小时后移除。</Chinesesimp>
-			<Chinese>1 小時後移除。</Chinese>
-			<Portuguese>Remover após 1 hora.</Portuguese>
-			<Czech>Odstranit po 1 hodině.</Czech>
-		</Key>
-		<Key ID="STR_CLEANUP_PARAM_OPT5">
-			<Original>Clean up after 2 hours</Original>
-			<Russian>Удалить через 2 часа</Russian>
-			<French>Supprimer após 2 heures</French>
-			<Chinesesimp>2 小时后移除。</Chinesesimp>
-			<Chinese>2 小時後移除。</Chinese>
-			<Portuguese>Remover após 2 horas.</Portuguese>
-			<Czech>Odstranit po 2 hodinách.</Czech>
+			<Original>Clean up after %1 hour(s)</Original>
+			<French>Supprimer après %1 heure(s)</French>
+			<Russian>Удалить через %1 час(a)</Russian>
+			<Chinesesimp>%1 小时后移除。</Chinesesimp>
+			<Chinese>%1 小時後移除。</Chinese>
+			<Portuguese>Remover após %1 hora(s)</Portuguese>
+			<Czech>Odstranit po %1 hodině</Czech>
 		</Key>
 		<Key ID="STR_AUTO_SAVE_DESC">
 			<Original>Determines the interval (in seconds) for automatic mission saves.</Original>
-			<Russian>Определяет интервал (в секундах) для автоматического сохранения миссии.</Russian>
 			<French>Détermine l’intervalle (en secondes) pour les sauvegardes automatiques de mission.</French>
+			<Russian>Определяет интервал (в секундах) для автоматического сохранения миссии.</Russian>
 			<Chinesesimp>确定自动任务保存的间隔（秒）。</Chinesesimp>
 			<Chinese>確定自動任務保存的間隔（秒）。</Chinese>
 			<Portuguese>Determina o intervalo (em segundos) para salvamentos automáticos de missão.</Portuguese>
@@ -13121,57 +12846,30 @@
 		</Key>
 		<Key ID="STR_AUTO_SAVE_OPT0">
 			<Original>Disable autosave</Original>
-			<Russian>Отключить автосохранение</Russian>
 			<French>Désactiver la sauvegarde automatique</French>
+			<Russian>Отключить автосохранение</Russian>
 			<Chinesesimp>禁用自动保存。</Chinesesimp>
 			<Chinese>禁用自動保存。</Chinese>
 			<Portuguese>Desativar salvamento automático.</Portuguese>
 			<Czech>Zakázat automatické ukládání.</Czech>
 		</Key>
 		<Key ID="STR_AUTO_SAVE_OPT1">
-			<Original>Autosave every 15 minutes</Original>
-			<Russian>Автосохранение каждые 15 минут</Russian>
-			<French>Sauvegarde automatique toutes les 15 minutes</French>
-			<Chinesesimp>每 15 分钟自动保存。</Chinesesimp>
-			<Chinese>每 15 分鐘自動保存。</Chinese>
-			<Portuguese>Salvamento automático a cada 15 minutos.</Portuguese>
-			<Czech>Automaticky ukládat každých 15 minut.</Czech>
+			<Original>Autosave every %1 minutes</Original>
+			<French>Sauvegarde automatique toutes les %1 minutes</French>
+			<Russian>Автосохранение каждые %1 минут</Russian>
+			<Chinesesimp>每 %1 分钟自动保存。</Chinesesimp>
+			<Chinese>每 %1 分鐘自動保存。</Chinese>
+			<Portuguese>Salvamento automático a cada %1 minutos.</Portuguese>
+			<Czech>Automaticky ukládat každých %1 minut.</Czech>
 		</Key>
 		<Key ID="STR_AUTO_SAVE_OPT2">
-			<Original>Autosave every 20 minutes</Original>
-			<Russian>Автосохранение каждые 20 минут</Russian>
-			<French>Sauvegarde automatique toutes les 20 minutes</French>
-			<Chinesesimp>每 20 分钟自动保存。</Chinesesimp>
-			<Chinese>每 20 分鐘自動保存。</Chinese>
-			<Portuguese>Salvamento automático a cada 20 minutos.</Portuguese>
-			<Czech>Automaticky ukládat každých 20 minut.</Czech>
-		</Key>
-		<Key ID="STR_AUTO_SAVE_OPT3">
-			<Original>Autosave every 30 minutes</Original>
-			<Russian>Автосохранение каждые 30 минут</Russian>
-			<French>Sauvegarde automatique toutes les 30 minutes</French>
-			<Chinesesimp>每 30 分钟自动保存。</Chinesesimp>
-			<Chinese>每 30 分鐘自動保存。</Chinese>
-			<Portuguese>Salvamento automático a cada 30 minutos.</Portuguese>
-			<Czech>Automaticky ukládat každých 30 minut.</Czech>
-		</Key>
-		<Key ID="STR_AUTO_SAVE_OPT4">
-			<Original>Autosave every 1 hour</Original>
-			<Russian>Автосохранение каждые 1 час</Russian>
-			<French>Sauvegarde automatique toutes les 1 heure</French>
-			<Chinesesimp>每 1 小时自动保存。</Chinesesimp>
-			<Chinese>每 1 小時自動保存。</Chinese>
-			<Portuguese>Salvamento automático a cada 1 hora.</Portuguese>
-			<Czech>Automaticky ukládat každou 1 hodinu.</Czech>
-		</Key>
-		<Key ID="STR_AUTO_SAVE_OPT5">
-			<Original>Autosave every 2 hours</Original>
-			<Russian>Автосохранение каждые 2 часа</Russian>
-			<French>Sauvegarde automatique toutes les 2 heures</French>
-			<Chinesesimp>每 2 小时自动保存。</Chinesesimp>
-			<Chinese>每 2 小時自動保存。</Chinese>
-			<Portuguese>Salvamento automático a cada 2 horas.</Portuguese>
-			<Czech>Automaticky ukládat každé 2 hodiny.</Czech>
+			<Original>Autosave every %1 hour(s)</Original>
+			<French>Sauvegarde automatique toutes les %1 heure(s)</French>
+			<Russian>Автосохранение каждые %1 час(a)</Russian>
+			<Chinesesimp>每 %1 小时自动保存。</Chinesesimp>
+			<Chinese>每 %1 小時自動保存。</Chinese>
+			<Portuguese>Salvamento automático a cada %1 hora(s)</Portuguese>
+			<Czech>Automaticky ukládat každou %1 hodinu.</Czech>
 		</Key>
 		<Key ID="STR_PARAM_TFAR_RADIUS_DESC">
 			<Original>Sets the effective range of the TFAR radio for in‑game communications.</Original>
@@ -13291,85 +12989,31 @@
 			<Czech>Povolit administrační nabídku.</Czech>
 		</Key>
 		<Key ID="STR_RESPAWN_CD_DESC">
-			<Original>Specifies the cooldown period (in seconds) before a player can respawn.</Original>
-			<Russian>Определяет период восстановления (в секундах) перед возрождением игрока.</Russian>
-			<French>Spécifie la période de recharge (en secondes) avant qu’un joueur puisse réapparaître.</French>
+			<Original>Specifies the cooldown period (in seconds) before a player can respawn</Original>
+			<Russian>Определяет период восстановления (в секундах) перед возрождением игрока</Russian>
+			<French>Spécifie la période (en secondes) avant qu’un joueur puisse réapparaître</French>
 			<Chinesesimp>指定玩家重生前的冷却时间（秒）。</Chinesesimp>
 			<Chinese>指定玩家重生前的冷卻時間（秒）。</Chinese>
-			<Portuguese>Especifica o período de recarga (em segundos) antes de um jogador poder ressurgir.</Portuguese>
-			<Czech>Určuje dobu obnovení (v sekundách), než se hráč může znovu objevit.</Czech>
+			<Portuguese>Especifica o período (em segundos) antes de um jogador poder ressurgir</Portuguese>
+			<Czech>Určuje dobu (v sekundách), než se hráč může znovu objevit.</Czech>
 		</Key>
 		<Key ID="STR_RESPAWN_CD_OPT0">
 			<Original>No respawn cooldown</Original>
 			<Russian>Без восстановления</Russian>
-			<French>Pas de délai de rechargement</French>
+			<French>Pas de délai de réapparition</French>
 			<Chinesesimp>无重生冷却。</Chinesesimp>
 			<Chinese>無重生冷卻。</Chinese>
-			<Portuguese>Sem tempo de recarga.</Portuguese>
+			<Portuguese>Sem tempo de ressurgir</Portuguese>
 			<Czech>Bez doby obnovy.</Czech>
 		</Key>
 		<Key ID="STR_RESPAWN_CD_OPT1">
-			<Original>4‑minute respawn cooldown</Original>
-			<Russian>Время восстановления: 4 минуты</Russian>
-			<French>Délai de rechargement : 4 minutes</French>
-			<Chinesesimp>4分钟重生冷却。</Chinesesimp>
-			<Chinese>4分鐘重生冷卻。</Chinese>
-			<Portuguese>Tempo de recarga de 4 minutos.</Portuguese>
-			<Czech>Doba obnovy: 4 minuty.</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_CD_OPT2">
-			<Original>5‑minute respawn cooldown</Original>
-			<Russian>Время восстановления: 5 минут</Russian>
-			<French>Délai de rechargement : 5 minutes</French>
-			<Chinesesimp>5分钟重生冷却。</Chinesesimp>
-			<Chinese>5分鐘重生冷卻。</Chinese>
-			<Portuguese>Tempo de recarga de 5 minutos.</Portuguese>
-			<Czech>Doba obnovy: 5 minut.</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_CD_OPT3">
-			<Original>6‑minute respawn cooldown</Original>
-			<Russian>Время восстановления: 6 минут</Russian>
-			<French>Délai de rechargement : 6 minutes</French>
-			<Chinesesimp>6分钟重生冷却。</Chinesesimp>
-			<Chinese>6分鐘重生冷卻。</Chinese>
-			<Portuguese>Tempo de recarga de 6 minutos.</Portuguese>
-			<Czech>Doba obnovy: 6 minut.</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_CD_OPT4">
-			<Original>7‑minute respawn cooldown</Original>
-			<Russian>Время восстановления: 7 минут</Russian>
-			<French>Délai de rechargement : 7 minutes</French>
-			<Chinesesimp>7分钟重生冷却。</Chinesesimp>
-			<Chinese>7分鐘重生冷卻。</Chinese>
-			<Portuguese>Tempo de recarga de 7 minutos.</Portuguese>
-			<Czech>Doba obnovy: 7 minut.</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_CD_OPT5">
-			<Original>8‑minute respawn cooldown</Original>
-			<Russian>Время восстановления: 8 минут</Russian>
-			<French>Délai de rechargement : 8 minutes</French>
-			<Chinesesimp>8分钟重生冷却。</Chinesesimp>
-			<Chinese>8分鐘重生冷卻。</Chinese>
-			<Portuguese>Tempo de recarga de 8 minutos.</Portuguese>
-			<Czech>Doba obnovy: 8 minut.</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_CD_OPT6">
-			<Original>9‑minute respawn cooldown</Original>
-			<Russian>Время восстановления: 9 минут</Russian>
-			<French>Délai de rechargement : 9 minutes</French>
-			<Chinesesimp>9分钟重生冷却。</Chinesesimp>
-			<Chinese>9分鐘重生冷卻。</Chinese>
-			<Portuguese>Tempo de recarga de 9 minutos.</Portuguese>
-			<Czech>Doba obnovy: 9 minut.</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_CD_OPT7">
-			<Original>10‑minute respawn cooldown</Original>
-			<Russian>Время восстановления: 10 минут</Russian>
-			<French>Délai de rechargement : 10 minutes</French>
-			<Chinesesimp>10分钟重生冷却。</Chinesesimp>
-			<Chinese>10分鐘重生冷卻。</Chinese>
-			<Portuguese>Tempo de recarga de 10 minutos.</Portuguese>
-			<Czech>Doba obnovy: 10 minut.</Czech>
+			<Original>%1 minute respawn cooldown</Original>
+			<Russian>Время восстановления: %1 минуты</Russian>
+			<French>%1 minutes de délai de réapparition</French>
+			<Chinesesimp>%1分钟重生冷却。</Chinesesimp>
+			<Chinese>%1分鐘重生冷卻。</Chinese>
+			<Portuguese>%1 minutos de tempo de ressurgir</Portuguese>
+			<Czech>%1 minuty Doba obnovy</Czech>
 		</Key>
 		<Key ID="STR_KICK_IDLE_DESC">
 			<Original>Determines the idle time limit (in seconds) before a player is automatically kicked.</Original>
@@ -13390,49 +13034,22 @@
 			<Czech>Nevykopávat nečinné hráče.</Czech>
 		</Key>
 		<Key ID="STR_KICK_IDLE_OPT1">
-			<Original>Kick after 15 minutes idle</Original>
-			<Russian>Удалить после 15 минут бездействия</Russian>
-			<French>Expulser après 15 minutes d’inactivité</French>
-			<Chinesesimp>空闲 15 分钟后踢出。</Chinesesimp>
-			<Chinese>閒置 15 分鐘后踢出。</Chinese>
-			<Portuguese>Expulsar após 15 minutos de inatividade.</Portuguese>
-			<Czech>Vykopnout po 15 minutách nečinnosti.</Czech>
+			<Original>Kick after %1 minutes idle</Original>
+			<Russian>Удалить после %1 минут бездействия</Russian>
+			<French>Expulser après %1 minutes d’inactivité</French>
+			<Chinesesimp>空闲 %1 分钟后踢出。</Chinesesimp>
+			<Chinese>閒置 %1 分鐘后踢出。</Chinese>
+			<Portuguese>Expulsar após %1 minutos de inatividade.</Portuguese>
+			<Czech>Vykopnout po %1 minutách nečinnosti.</Czech>
 		</Key>
 		<Key ID="STR_KICK_IDLE_OPT2">
-			<Original>Kick after 20 minutes idle</Original>
-			<Russian>Удалить после 20 минут бездействия</Russian>
-			<French>Expulser après 20 minutes d’inactivité</French>
-			<Chinesesimp>空闲 20 分钟后踢出。</Chinesesimp>
-			<Chinese>閒置 20 分鐘后踢出。</Chinese>
-			<Portuguese>Expulsar após 20 minutos de inatividade.</Portuguese>
-			<Czech>Vykopnout po 20 minutách nečinnosti.</Czech>
-		</Key>
-		<Key ID="STR_KICK_IDLE_OPT3">
-			<Original>Kick after 30 minutes idle</Original>
-			<Russian>Удалить после 30 минут бездействия</Russian>
-			<French>Expulser après 30 minutes d’inactivité</French>
-			<Chinesesimp>空闲 30 分钟后踢出。</Chinesesimp>
-			<Chinese>閒置 30 分鐘后踢出。</Chinese>
-			<Portuguese>Expulsar após 30 minutos de inatividade.</Portuguese>
-			<Czech>Vykopnout po 30 minutách nečinnosti.</Czech>
-		</Key>
-		<Key ID="STR_KICK_IDLE_OPT4">
-			<Original>Kick after 1 hour idle</Original>
-			<Russian>Удалить после 1 часа бездействия</Russian>
-			<French>Expulser après 1 heure d’inactivité</French>
-			<Chinesesimp>空闲 1 小时后踢出。</Chinesesimp>
-			<Chinese>閒置 1 小時后踢出。</Chinese>
-			<Portuguese>Expulsar após 1 hora de inatividade.</Portuguese>
-			<Czech>Vykopnout po 1 hodině nečinnosti.</Czech>
-		</Key>
-		<Key ID="STR_KICK_IDLE_OPT5">
-			<Original>Kick after 2 hours idle</Original>
-			<Russian>Удалить после 2 часов бездействия</Russian>
-			<French>Expulser après 2 heures d’inactivité</French>
-			<Chinesesimp>空闲 2 小时后踢出。</Chinesesimp>
-			<Chinese>閒置 2 小時后踢出。</Chinese>
-			<Portuguese>Expulsar após 2 horas de inatividade.</Portuguese>
-			<Czech>Vykopnout po 2 hodinách nečinnosti.</Czech>
+			<Original>Kick after %1 hour(s) idle</Original>
+			<Russian>Удалить после %1 час(а) бездействия</Russian>
+			<French>Expulser après %1 heure(s) d’inactivité</French>
+			<Chinesesimp>空闲 %1 小时后踢出。</Chinesesimp>
+			<Chinese>閒置 %1 小時后踢出。</Chinese>
+			<Portuguese>Expulsar após %1 hora(s) de inatividade.</Portuguese>
+			<Czech>Vykopnout po %1 hodině nečinnosti.</Czech>
 		</Key>
 		<Key ID="STR_TK_MODE_DESC">
 			<Original>Configures the team killing mode.</Original>
@@ -13488,33 +13105,6 @@
 			<Portuguese>Permitir até %1 team kills.</Portuguese>
 			<Czech>Povolit až %1 zabití vlastních.</Czech>
 		</Key>
-		<Key ID="STR_PERSISTENT_MODE_DESC">
-			<Original>Enables or disables persistent mode, maintaining mission state across sessions.</Original>
-			<Russian>Включает или отключает постоянный режим, сохраняя состояние миссии между сессиями.</Russian>
-			<French>Active ou désactive le mode persistant, maintenant l’état de la mission entre les sessions.</French>
-			<Chinesesimp>启用或禁用持久模式，在会话之间维护任务状态。</Chinesesimp>
-			<Chinese>啟用或禁用持久模式，在會話之間維護任務狀態。</Chinese>
-			<Portuguese>Ativa ou desativa o modo persistente, mantendo o estado da missão entre sessões.</Portuguese>
-			<Czech>Povolit nebo zakázat perzistentní režim, zachovávající stav mise mezi relacemi.</Czech>
-		</Key>
-		<Key ID="STR_PERSISTENT_MODE_OPT0">
-			<Original>Disable persistent mode</Original>
-			<Russian>Отключить постоянный режим</Russian>
-			<French>Désactiver le mode persistant</French>
-			<Chinesesimp>禁用持久模式。</Chinesesimp>
-			<Chinese>禁用持久模式。</Chinese>
-			<Portuguese>Desativar modo persistente.</Portuguese>
-			<Czech>Zakázat perzistentní režim.</Czech>
-		</Key>
-		<Key ID="STR_PERSISTENT_MODE_OPT1">
-			<Original>Enable persistent mode</Original>
-			<Russian>Включить постоянный режим</Russian>
-			<French>Activer le mode persistant</French>
-			<Chinesesimp>启用持久模式。</Chinesesimp>
-			<Chinese>啟用持久模式。</Chinese>
-			<Portuguese>Ativar modo persistente.</Portuguese>
-			<Czech>Povolit perzistentní režim.</Czech>
-		</Key>
 		<Key ID="STR_UNDERCOVER_MODE_DESC">
 			<Original>Enables the Civilian undercover mode.</Original>
 			<French>Active le mode civil sous couverture (undercover).</French>
@@ -13555,68 +13145,14 @@
 			<Portuguese>Quando o comandante escolhe um setor para atacar, setores inimigos próximos dentro desse alcance defenderão.</Portuguese>
 			<Czech>Když velitel zvolí sektor k útoku, blízké nepřátelské sektory v tomto rozmezí budou bránit.</Czech>
 		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT5">
-			<Original>Defense activation range: 500 m</Original>
-			<Russian>Диапазон активации защиты : 500 м</Russian>
-			<French>Portée d’activation de la défense : 500 m</French>
-			<Chinesesimp>防御激活范围：500 米</Chinesesimp>
-			<Chinese>防禦激活範圍：500 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 500 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 500 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT6">
-			<Original>Defense activation range: 600 m</Original>
-			<Russian>Диапазон активации защиты : 600 м</Russian>
-			<French>Portée d’activation de la défense : 600 m</French>
-			<Chinesesimp>防御激活范围：600 米</Chinesesimp>
-			<Chinese>防禦激活範圍：600 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 600 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 600 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT7">
-			<Original>Defense activation range: 700 m</Original>
-			<Russian>Диапазон активации защиты : 700 м</Russian>
-			<French>Portée d’activation de la défense : 700 m</French>
-			<Chinesesimp>防御激活范围：700 米</Chinesesimp>
-			<Chinese>防禦激活範圍：700 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 700 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 700 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT8">
-			<Original>Defense activation range: 800 m</Original>
-			<Russian>Диапазон активации защиты : 800 м</Russian>
-			<French>Portée d’activation de la défense : 800 m</French>
-			<Chinesesimp>防御激活范围：800 米</Chinesesimp>
-			<Chinese>防禦激活範圍：800 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 800 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 800 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT9">
-			<Original>Defense activation range: 900 m</Original>
-			<Russian>Диапазон активации защиты : 900 м</Russian>
-			<French>Portée d’activation de la défense : 900 m</French>
-			<Chinesesimp>防御激活范围：900 米</Chinesesimp>
-			<Chinese>防禦激活範圍：900 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 900 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 900 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT10">
-			<Original>Defense activation range: 1000 m</Original>
-			<Russian>Диапазон активации защиты : 1000 м</Russian>
-			<French>Portée d’activation de la défense : 1000 m</French>
-			<Chinesesimp>防御激活范围：1000 米</Chinesesimp>
-			<Chinese>防禦激活範圍：1000 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 1000 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 1000 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT15">
-			<Original>Defense activation range: 1500 m</Original>
-			<Russian>Диапазон активации защиты : 1500 м</Russian>
-			<French>Portée d’activation de la défense : 1500 m</French>
-			<Chinesesimp>防御激活范围：1500 米</Chinesesimp>
-			<Chinese>防禦激活範圍：1500 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 1500 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 1500 m</Czech>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT0">
+			<Original>Defense activation range: %1</Original>
+			<Russian>Диапазон активации защиты : %1</Russian>
+			<French>Portée d’activation de la défense : %1</French>
+			<Chinesesimp>防御激活范围：%1</Chinesesimp>
+			<Chinese>防禦激活範圍：%1</Chinese>
+			<Portuguese>Alcance de ativação de defesa: %1</Portuguese>
+			<Czech>Rozsah aktivace obrany: %1</Czech>
 		</Key>
 		<Key ID="STR_ALARMS">
 			<Original>Alarms</Original>
@@ -14798,7 +14334,7 @@
 		<Key ID="STR_MSG_INVALID_LRXMOD_VERSION">
 			<Original>Invalid version for LRX_Template mod detected...\nAll client/server must use the same version of this mod, Please update LRX_Template!</Original>
 		</Key>
-		
+
 		<Key ID="STR_MSG_END_GAME">
 			<Original>You come too late...\nThe mission is ending, reconnect when the mission is restarted</Original>
 			<French>Vous arrivez trop tard...\nLa mission se termine, reconnectez-vous lorsque la mission redémarre</French>
@@ -15235,39 +14771,12 @@
 		</Key>
 		<Key ID="STR_JKB_JUKEBOX_MUSIC">
 			<Original>Music in Jukebox: </Original>
-			<French>Musique dans le Jukebox : </French>
-			<German>Musik in der Jukebox: </German>
-			<Spanish>Música en la Jukebox: </Spanish>
-			<Russian>Музыка в джукбоксе: </Russian>
-			<Chinesesimp>音乐播放器音乐：</Chinesesimp>
-			<Chinese>音樂播放器音樂：</Chinese>
-			<Japanese>ジュークボックスの音楽：</Japanese>
-			<Portuguese>Música na Jukebox: </Portuguese>
-			<Czech>Hudba v jukeboxu: </Czech>
 		</Key>
 		<Key ID="STR_JKB_AUTOPLAY">
 			<Original>Auto play</Original>
-			<French>Lecture automatique</French>
-			<German>Automatisch abspielen</German>
-			<Spanish>Reproducción automática</Spanish>
-			<Russian>Автовоспроизведение</Russian>
-			<Chinesesimp>自动播放</Chinesesimp>
-			<Chinese>自動播放</Chinese>
-			<Japanese>自動再生</Japanese>
-			<Portuguese>Reprodução automática</Portuguese>
-			<Czech>Automatické přehrávání</Czech>
 		</Key>
 		<Key ID="STR_JKB_RANDOM">
 			<Original>Random</Original>
-			<French>Aléatoire</French>
-			<German>Zufällig</German>
-			<Spanish>Aleatorio</Spanish>
-			<Russian>Случайный</Russian>
-			<Chinesesimp>随机播放</Chinesesimp>
-			<Chinese>隨機播放</Chinese>
-			<Japanese>ランダム</Japanese>
-			<Portuguese>Aleatório</Portuguese>
-			<Czech>Náhodně</Czech>
 		</Key>
 		<Key ID="STR_JKB_MENU">
 			<Original>-- Juke Box --</Original>
@@ -15287,19 +14796,9 @@
 		</Key>
 		<Key ID="STR_JKB_START">
 			<Original>Play</Original>
-			<Russian>Play</Russian>
-			<Chinesesimp>播放</Chinesesimp>
-			<Chinese>播放</Chinese>
-			<Portuguese>Jogar</Portuguese>
-			<Czech>Play</Czech>
 		</Key>
 		<Key ID="STR_JKB_STOP">
 			<Original>Stop</Original>
-			<Russian>Stop</Russian>
-			<Chinesesimp>暂停</Chinesesimp>
-			<Chinese>暫停</Chinese>
-			<Portuguese>Pare</Portuguese>
-			<Czech>Stop</Czech>
 		</Key>
 	</Package>
 
@@ -15708,7 +15207,7 @@
 		</Key>
 		<Key ID="STR_PAR_AI_REVIVE_ACE_INITIALIZED">
 			<Original>-------- pSiKo AI Revive (ACE version) Initialized --------</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_PAR_Need_Medic1">
 			<Original>I need a medic!</Original>
 			<French>J'ai besoin d'un médecin!</French>

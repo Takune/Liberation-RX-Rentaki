@@ -9,6 +9,7 @@ private _classnames_to_destroy = [
 	Warehouse_desk_typename,
 	repair_station_typename,
 	"Land_MedicalTent_01_base_F",
+	"Land_MedicalTent_01_floor_base_F",
 	"Helipad_base_F",
 	"Land_fs_feed_F"
 ];
@@ -19,7 +20,7 @@ private _classnames_to_destroy_naval = [
 	"Land_Carrier_01_hull_base_F"
 ];	
 
-_classnames_to_destroy append all_buildings_classnames + fob_defenses_classnames + list_static_weapons;
+_classnames_to_destroy append all_buildings_classnames + list_static_weapons;
 
 private _sleep = 0.05;
 if (surfaceIsWater _fob_pos) then {
@@ -45,6 +46,11 @@ if (count _all_buildings_to_destroy > 300) then { _sleep = 0 };
 		{ deleteVehicle _x } forEach (_building getVariable ["GRLIB_FOB_Objects", []]);
 		deleteVehicle (_building getVariable ["GRLIB_FOB_Officer", objNull]);
 	};
+
+	if (_building getVariable ["GRLIB_vehicle_manned", false]) then {
+		[_building, true, true] call F_vehicleClean;
+	};
+
 	deleteVehicle _building;
 	sleep _sleep;
 } foreach _all_buildings_to_destroy;

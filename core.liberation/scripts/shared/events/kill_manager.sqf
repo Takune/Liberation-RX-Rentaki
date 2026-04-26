@@ -39,6 +39,10 @@ if (isServer) then {
 
 	// Quick Delete
 	if ([_unit_class, GRLIB_quick_delete] call F_itemIsInClass) exitWith {
+		if (_unit_class == medic_heal_typename) then {
+			private _med_floor = (nearestObjects [_unit, ["Land_MedicalTent_01_floor_base_F"], 20]) select 0;
+			if (!isNil "_med_floor") then { deleteVehicle _med_floor };
+		};
 		_unit setDamage 1;
 		sleep 5;
 		deleteVehicle _unit;
@@ -195,7 +199,7 @@ if (isServer) then {
 				};
 				if (_unit_side == GRLIB_side_friendly) exitWith {
 					stats_blufor_teamkills = stats_blufor_teamkills + 1;
-					[_killer, -50] call F_addScore;
+					if (GRLIB_civ_penalties > 0) then { [_killer, -50] call F_addScore };
 					_msg = localize "STR_FRIENDLY_FIRE";
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
 				};

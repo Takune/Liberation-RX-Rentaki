@@ -54,6 +54,7 @@ GRLIB_PARAM_HaloJump = "HaloJump";
 GRLIB_PARAM_Patrols = "Patrols";
 GRLIB_PARAM_Wildlife = "Wildlife";
 GRLIB_PARAM_Civilians = "Civilians";
+GRLIB_PARAM_Facilities = "Facilities";
 GRLIB_PARAM_AirSupport = "AirSupport";
 GRLIB_PARAM_CivPenalties = "CivPenalties";
 GRLIB_PARAM_ModPresetWest = "ModPresetWest";
@@ -107,7 +108,6 @@ GRLIB_PARAM_RespawnCD = "RespawnCD";
 GRLIB_PARAM_KickIdle = "KickIdle";
 GRLIB_PARAM_TK_mode = "TK_mode";
 GRLIB_PARAM_TK_count = "TK_count";
-GRLIB_PARAM_Persistent = "Persistent";
 GRLIB_PARAM_UndercoverModeEnabled = "UndercoverMode";
 GRLIB_PARAM_CommanderModeEnabled = "CommanderMode";
 GRLIB_PARAM_CommanderModeRadius = "CommanderRadius";
@@ -278,22 +278,62 @@ _Mission_Params = [
         ]]
     ]],
     [GRLIB_PARAM_VulnerabilityTimer, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 900],
+        [GRLIB_PARAM_ValueKey, (15*60)],
         [GRLIB_PARAM_NameKey, localize "STR_VULN_TIMER"],
         [GRLIB_PARAM_OptionLabelKey, [
-            localize "STR_CLEANUP_PARAM0",
-            localize "STR_CLEANUP_PARAM1",
-            localize "STR_CLEANUP_PARAM2",
-            localize "STR_CLEANUP_PARAM3"
+            format [localize "STR_CLEANUP_PARAM1", 10],
+            format [localize "STR_CLEANUP_PARAM1", 15],
+            format [localize "STR_CLEANUP_PARAM1", 20],
+            format [localize "STR_CLEANUP_PARAM1", 30]
         ]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
-        [GRLIB_PARAM_OptionValuesKey, [600,900,1200,1800]],
+        [GRLIB_PARAM_OptionValuesKey, [(10*60),(15*60),(20*60),(30*60)]],
         [GRLIB_PARAM_DescriptionKey, localize "STR_VULN_TIMER_PARAM_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_CLEANUP_PARAM0",
-            localize "STR_CLEANUP_PARAM1",
-            localize "STR_CLEANUP_PARAM2",
-            localize "STR_CLEANUP_PARAM3"
+            format [localize "STR_CLEANUP_PARAM1", 10],
+            format [localize "STR_CLEANUP_PARAM1", 15],
+            format [localize "STR_CLEANUP_PARAM1", 20],
+            format [localize "STR_CLEANUP_PARAM1", 30]
+        ]]
+    ]],
+    [GRLIB_PARAM_SectorDespawn, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, (10*12)],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_SECTOR_DESPAWN"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            format [localize "STR_CLEANUP_PARAM1", 5],
+            format [localize "STR_CLEANUP_PARAM1", 10],
+            format [localize "STR_CLEANUP_PARAM1", 15],
+            format [localize "STR_CLEANUP_PARAM1", 20],
+            format [localize "STR_CLEANUP_PARAM1", 25],
+            format [localize "STR_CLEANUP_PARAM1", 30]
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [(5*12),(10*12),(15*12),(20*12),(25*12),(30*12)]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAM_SECTOR_DESPAWN_DESC"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            format [localize "STR_PARAM_SECTOR_DESPAWN_OPT0", 5],
+            format [localize "STR_PARAM_SECTOR_DESPAWN_OPT0", 10],
+            format [localize "STR_PARAM_SECTOR_DESPAWN_OPT0", 15],
+            format [localize "STR_PARAM_SECTOR_DESPAWN_OPT0", 20],
+            format [localize "STR_PARAM_SECTOR_DESPAWN_OPT0", 25],
+            format [localize "STR_PARAM_SECTOR_DESPAWN_OPT0", 30]
+        ]]
+    ]],
+    [GRLIB_PARAM_BuildingRatio, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1.5],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_BUILDING_RATIO"],
+        [GRLIB_PARAM_OptionLabelKey, ["0.5","1","1.5","2","2.5","3","6"]],
+        [GRLIB_PARAM_OptionValuesKey, [0.5,1,1.5,2,2.5,3,6]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_BUILDING_RATIO_DESC"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            localize "STR_PARAMS_BUILDING_RATIO_OPT0",
+            localize "STR_PARAMS_BUILDING_RATIO_OPT1",
+            localize "STR_PARAMS_BUILDING_RATIO_OPT2",
+            localize "STR_PARAMS_BUILDING_RATIO_OPT3",
+            localize "STR_PARAMS_BUILDING_RATIO_OPT4",
+            localize "STR_PARAMS_BUILDING_RATIO_OPT5",
+            localize "STR_PARAMS_BUILDING_RATIO_OPT6"
         ]]
     ]],
     [GRLIB_PARAM_VictoryCondition, createHashMapFromArray [
@@ -432,20 +472,20 @@ _Mission_Params = [
         [GRLIB_PARAM_NameKey, localize "STR_PARAM_PASSIVE_INCOME"],
         [GRLIB_PARAM_OptionLabelKey, [
             localize "STR_PARAMS_DISABLED",
-            localize "STR_CLEANUP_PARAM2",
-            localize "STR_CLEANUP_PARAM3",
-            localize "STR_CLEANUP_PARAM4",
-            localize "STR_CLEANUP_PARAM5"
+            format [localize "STR_CLEANUP_PARAM1", 20],
+            format [localize "STR_CLEANUP_PARAM1", 30],
+            format [localize "STR_CLEANUP_PARAM2", 1],
+            format [localize "STR_CLEANUP_PARAM2", 2]
         ]],
-        [GRLIB_PARAM_OptionValuesKey, [0,1200,1800,3600,7200]],
+        [GRLIB_PARAM_OptionValuesKey, [0,(20*60),(30*60),(60*60),(120*60)]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_PARAM_PASSIVE_INCOME_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
             localize "STR_PARAM_PASSIVE_INCOME_OPT0",
-            localize "STR_PARAM_PASSIVE_INCOME_DELAY_OPT0",
-            localize "STR_PARAM_PASSIVE_INCOME_DELAY_OPT1",
-            localize "STR_PARAM_PASSIVE_INCOME_DELAY_OPT2",
-            localize "STR_PARAM_PASSIVE_INCOME_DELAY_OPT3"
+            format [localize "STR_PARAM_PASSIVE_INCOME_DELAY_OPT0", 20],
+            format [localize "STR_PARAM_PASSIVE_INCOME_DELAY_OPT0", 30],
+            format [localize "STR_PARAM_PASSIVE_INCOME_DELAY_OPT1", 1],
+            format [localize "STR_PARAM_PASSIVE_INCOME_DELAY_OPT1", 2]
         ]]
     ]],
     [GRLIB_PARAM_PassiveIncomeAmmount, createHashMapFromArray [
@@ -560,6 +600,18 @@ _Mission_Params = [
         [GRLIB_PARAM_OptionDescriptionKey, [
             localize "STR_PARAM_WILDLIFE_OPT0",
             localize "STR_PARAM_WILDLIFE_OPT1"
+        ]]
+    ]],
+    [GRLIB_PARAM_Facilities, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_FACILITIES"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0,1]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_FACILITIES_DESC"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            localize "STR_PARAMS_FACILITIES_OPT0",
+            localize "STR_PARAMS_FACILITIES_OPT1"
         ]]
     ]],
     [GRLIB_PARAM_AirSupport, createHashMapFromArray [
@@ -721,28 +773,35 @@ _Mission_Params = [
         [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_PAR_AI_REVIVE_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
             localize "STR_PARAMS_PAR_AI_REVIVE_OPT0",
-            localize "STR_PARAMS_PAR_AI_REVIVE_OPT1",
-            localize "STR_PARAMS_PAR_AI_REVIVE_OPT2",
-            localize "STR_PARAMS_PAR_AI_REVIVE_OPT3",
-            localize "STR_PARAMS_PAR_AI_REVIVE_OPT4",
-            localize "STR_PARAMS_PAR_AI_REVIVE_OPT5",
-            localize "STR_PARAMS_PAR_AI_REVIVE_OPT6"
+            format [localize "STR_PARAMS_PAR_AI_REVIVE_OPT1", 3],
+            format [localize "STR_PARAMS_PAR_AI_REVIVE_OPT1", 5],
+            format [localize "STR_PARAMS_PAR_AI_REVIVE_OPT1", 7],
+            format [localize "STR_PARAMS_PAR_AI_REVIVE_OPT1", 10],
+            format [localize "STR_PARAMS_PAR_AI_REVIVE_OPT1", 15],
+            format [localize "STR_PARAMS_PAR_AI_REVIVE_OPT1", 20]
         ]]
     ]],
     [GRLIB_PARAM_PAR_BleedOut, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 300],
         [GRLIB_PARAM_NameKey, localize "STR_PARAMS_PAR_BLEEDOUT"],
-        [GRLIB_PARAM_OptionLabelKey, ["100","200","300","400","500","600"]],
+        [GRLIB_PARAM_OptionLabelKey, [
+            format [localize "STR_CLEANUP_PARAM0", 100],
+            format [localize "STR_CLEANUP_PARAM0", 200],
+            format [localize "STR_CLEANUP_PARAM0", 300],
+            format [localize "STR_CLEANUP_PARAM0", 400],
+            format [localize "STR_CLEANUP_PARAM0", 500],
+            format [localize "STR_CLEANUP_PARAM0", 600]
+        ]],
         [GRLIB_PARAM_OptionValuesKey, [100,200,300,400,500,600]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_PAR_BLEEDOUT_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_PARAMS_PAR_BLEEDOUT_OPT0",
-            localize "STR_PARAMS_PAR_BLEEDOUT_OPT1",
-            localize "STR_PARAMS_PAR_BLEEDOUT_OPT2",
-            localize "STR_PARAMS_PAR_BLEEDOUT_OPT3",
-            localize "STR_PARAMS_PAR_BLEEDOUT_OPT4",
-            localize "STR_PARAMS_PAR_BLEEDOUT_OPT5"
+            format [localize "STR_PARAMS_PAR_BLEEDOUT_OPT0", 100],
+            format [localize "STR_PARAMS_PAR_BLEEDOUT_OPT0", 200],
+            format [localize "STR_PARAMS_PAR_BLEEDOUT_OPT0", 300],
+            format [localize "STR_PARAMS_PAR_BLEEDOUT_OPT0", 400],
+            format [localize "STR_PARAMS_PAR_BLEEDOUT_OPT0", 500],
+            format [localize "STR_PARAMS_PAR_BLEEDOUT_OPT0", 600]
         ]]
     ]],
     [GRLIB_PARAM_PAR_Grave, createHashMapFromArray [
@@ -760,17 +819,26 @@ _Mission_Params = [
     [GRLIB_PARAM_PAR_RespawnBtn, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 20],
         [GRLIB_PARAM_NameKey, localize "STR_PARAM_RESPAWN"],
-        [GRLIB_PARAM_OptionLabelKey, ["5","10","20","25","30","60"]],
-        [GRLIB_PARAM_OptionValuesKey, [5,10,20,25,30,60]],
+        [GRLIB_PARAM_OptionLabelKey, [
+            format [localize "STR_CLEANUP_PARAM0", 5],            
+            format [localize "STR_CLEANUP_PARAM0", 10],
+            format [localize "STR_CLEANUP_PARAM0", 20],
+            format [localize "STR_CLEANUP_PARAM0", 30],
+            format [localize "STR_CLEANUP_PARAM0", 40],
+            format [localize "STR_CLEANUP_PARAM0", 50],
+            format [localize "STR_CLEANUP_PARAM0", 60]
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [5,10,20,30,40,50,60]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_PARAM_RESPAWN_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_RESPAWN_OPT0",
-            localize "STR_RESPAWN_OPT1",
-            localize "STR_RESPAWN_OPT2",
-            localize "STR_RESPAWN_OPT3",
-            localize "STR_RESPAWN_OPT4",
-            localize "STR_RESPAWN_OPT5"
+            format [localize "STR_RESPAWN_OPT0", 5],
+            format [localize "STR_RESPAWN_OPT0", 10],
+            format [localize "STR_RESPAWN_OPT0", 20],
+            format [localize "STR_RESPAWN_OPT0", 30],
+            format [localize "STR_RESPAWN_OPT0", 40],
+            format [localize "STR_RESPAWN_OPT0", 50],
+            format [localize "STR_RESPAWN_OPT0", 60]
         ]]
     ]],
     [GRLIB_PARAM_SquadSize, createHashMapFromArray [
@@ -942,12 +1010,11 @@ _Mission_Params = [
     [GRLIB_PARAM_ForcedLoadout, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 1],
         [GRLIB_PARAM_NameKey, localize "STR_FORCE_LOADOUT"],
-        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", "Preset 1", "Preset 2"]],
-        [GRLIB_PARAM_OptionValuesKey, [0,1,2]],
+        [GRLIB_PARAM_OptionLabelKey, ["Preset 1", "Preset 2"]],
+        [GRLIB_PARAM_OptionValuesKey, [1,2]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_ArsenalCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_FORCE_LOADOUT_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_FORCE_LOADOUT_OPT0",
             localize "STR_FORCE_LOADOUT_OPT1",
             localize "STR_FORCE_LOADOUT_OPT2"
         ]]
@@ -1159,7 +1226,7 @@ _Mission_Params = [
     [GRLIB_PARAM_SectorRadius, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 0],
         [GRLIB_PARAM_NameKey, localize "STR_PARAM_SECTOR_RADIUS"],
-        [GRLIB_PARAM_OptionLabelKey, [format ["AUTO (%1)", GRLIB_sector_size],"300","400","600","800","1000","1200","1500","2000"]],
+        [GRLIB_PARAM_OptionLabelKey, [format ["AUTO (%1)", GRLIB_sector_size],"300 m","400 m","600 m","800 m","1 km","1.2 km","1.5 km","2 km"]],
         [GRLIB_PARAM_OptionValuesKey, [0,300,400,600,800,1000,1200,1500,2000]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_PARAM_SECTOR_RADIUS_DESC"],
@@ -1175,75 +1242,51 @@ _Mission_Params = [
             localize "STR_PARAM_SECTOR_RADIUS_OPT8"
         ]]
     ]],
-    [GRLIB_PARAM_SectorDespawn, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 72],
-        [GRLIB_PARAM_NameKey, localize "STR_PARAM_SECTOR_DESPAWN"],
-        [GRLIB_PARAM_OptionLabelKey, ["3","6","8","12","16","20"]],
-        [GRLIB_PARAM_OptionValuesKey, [(3*12),(6*12),(8*12),(12*12),(16*12),(20*12)]],
-        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
-        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAM_SECTOR_DESPAWN_DESC"],
-        [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_PARAM_SECTOR_DESPAWN_OPT0",
-            localize "STR_PARAM_SECTOR_DESPAWN_OPT1",
-            localize "STR_PARAM_SECTOR_DESPAWN_OPT2",
-            localize "STR_PARAM_SECTOR_DESPAWN_OPT3",
-            localize "STR_PARAM_SECTOR_DESPAWN_OPT4",
-            localize "STR_PARAM_SECTOR_DESPAWN_OPT5"
-        ]]
-    ]],
-    [GRLIB_PARAM_BuildingRatio, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 1.5],
-        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_BUILDING_RATIO"],
-        [GRLIB_PARAM_OptionLabelKey, ["0.5","1","1.5","2","2.5","3","6"]],
-        [GRLIB_PARAM_OptionValuesKey, [0.5,1,1.5,2,2.5,3,6]],
-        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
-        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_BUILDING_RATIO_DESC"],
-        [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_PARAMS_BUILDING_RATIO_OPT0",
-            localize "STR_PARAMS_BUILDING_RATIO_OPT1",
-            localize "STR_PARAMS_BUILDING_RATIO_OPT2",
-            localize "STR_PARAMS_BUILDING_RATIO_OPT3",
-            localize "STR_PARAMS_BUILDING_RATIO_OPT4",
-            localize "STR_PARAMS_BUILDING_RATIO_OPT5",
-            localize "STR_PARAMS_BUILDING_RATIO_OPT6"
-        ]]
-    ]],
     [GRLIB_PARAM_ArtyMaxShot, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 10],
         [GRLIB_PARAM_NameKey, localize "STR_PARAMS_MAX_SHOT"],
-        [GRLIB_PARAM_OptionLabelKey, ["10","15","20","25","30"]],
+        [GRLIB_PARAM_OptionLabelKey, [
+            "10 shots","15 shots","20 shots","25 shots","30 shots"
+        ]],
         [GRLIB_PARAM_OptionValuesKey, [10,15,20,25,30]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_MAX_SHOT_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            "10 round","15 round","20 round","25 round","30 round"
+            "10 shots","15 shots","20 shots","25 shots","30 shots"
         ]]
     ]],
     [GRLIB_PARAM_A3WCount, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 4],
         [GRLIB_PARAM_NameKey, localize "STR_PARAMS_A3W_COUNT"],
-        [GRLIB_PARAM_OptionLabelKey, ["0","1","2","3","4","5","6"]],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED","1","2","3","4","5","6"]],
         [GRLIB_PARAM_OptionValuesKey, [0,1,2,3,4,5,6]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_A3W_COUNT"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            "0","1","2","3","4","5","6"
+            localize "STR_PARAMS_DISABLED","1","2","3","4","5","6"
         ]]
     ]],
     [GRLIB_PARAM_A3WDelay, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 1800],
+        [GRLIB_PARAM_ValueKey, (30*60)],
         [GRLIB_PARAM_NameKey, localize "STR_PARAMS_A3W_DELAY"],
-        [GRLIB_PARAM_OptionLabelKey, ["10 min","15 min","20 min","30 min","1h","2h"]],
-        [GRLIB_PARAM_OptionValuesKey, [600,900,1200,1800,3600,7200]],
+        [GRLIB_PARAM_OptionLabelKey, [
+            format [localize "STR_CLEANUP_PARAM1", 10],
+            format [localize "STR_CLEANUP_PARAM1", 15],
+            format [localize "STR_CLEANUP_PARAM1", 20],
+            format [localize "STR_CLEANUP_PARAM1", 30],
+            format [localize "STR_CLEANUP_PARAM2", 1],
+            format [localize "STR_CLEANUP_PARAM2", 2]
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [(10*60),(15*60),(20*60),(30*60),(60*60),(120*60)]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_A3W_DELAY"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_CLEANUP_PARAM0",
-            localize "STR_CLEANUP_PARAM1",
-            localize "STR_CLEANUP_PARAM2",
-            localize "STR_CLEANUP_PARAM3",
-            localize "STR_CLEANUP_PARAM4",
-            localize "STR_CLEANUP_PARAM5"
+            format [localize "STR_CLEANUP_PARAM1", 10],
+            format [localize "STR_CLEANUP_PARAM1", 15],
+            format [localize "STR_CLEANUP_PARAM1", 20],
+            format [localize "STR_CLEANUP_PARAM1", 30],
+            format [localize "STR_CLEANUP_PARAM2", 1],
+            format [localize "STR_CLEANUP_PARAM2", 2]
         ]]
     ]],
     [GRLIB_PARAM_UndercoverModeEnabled, createHashMapFromArray [
@@ -1295,49 +1338,49 @@ _Mission_Params = [
         ]]
     ]],
     [GRLIB_PARAM_CleanupVehicles, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 1200],
+        [GRLIB_PARAM_ValueKey, (20*60)],
         [GRLIB_PARAM_NameKey, localize "STR_CLEANUP_PARAM"],
         [GRLIB_PARAM_OptionLabelKey, [
             localize "STR_PARAMS_DISABLED",
-            localize "STR_CLEANUP_PARAM1",
-            localize "STR_CLEANUP_PARAM2",
-            localize "STR_CLEANUP_PARAM3",
-            localize "STR_CLEANUP_PARAM4",
-            localize "STR_CLEANUP_PARAM5"
+            format [localize "STR_CLEANUP_PARAM1", 15],
+            format [localize "STR_CLEANUP_PARAM1", 20],
+            format [localize "STR_CLEANUP_PARAM1", 30],
+            format [localize "STR_CLEANUP_PARAM2", 1],
+            format [localize "STR_CLEANUP_PARAM2", 2]
         ]],
-        [GRLIB_PARAM_OptionValuesKey, [0,900,1200,1800,3600,7200]],
+        [GRLIB_PARAM_OptionValuesKey, [0,(15*60),(20*60),(30*60),(60*60),(120*60)]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_CLEANUP_PARAM_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
             localize "STR_CLEANUP_PARAM_OPT0",
-            localize "STR_CLEANUP_PARAM_OPT1",
-            localize "STR_CLEANUP_PARAM_OPT2",
-            localize "STR_CLEANUP_PARAM_OPT3",
-            localize "STR_CLEANUP_PARAM_OPT4",
-            localize "STR_CLEANUP_PARAM_OPT5"
+            format [localize "STR_CLEANUP_PARAM_OPT1", 15],
+            format [localize "STR_CLEANUP_PARAM_OPT1", 20],
+            format [localize "STR_CLEANUP_PARAM_OPT1", 30],
+            format [localize "STR_CLEANUP_PARAM_OPT2", 1],
+            format [localize "STR_CLEANUP_PARAM_OPT2", 2]
         ]]
     ]],
     [GRLIB_PARAM_AutoSave, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 1800],
+        [GRLIB_PARAM_ValueKey, (30*60)],
         [GRLIB_PARAM_NameKey, localize "STR_AUTO_SAVE"],
         [GRLIB_PARAM_OptionLabelKey, [
             localize "STR_PARAMS_DISABLED",
-            localize "STR_CLEANUP_PARAM1",
-            localize "STR_CLEANUP_PARAM2",
-            localize "STR_CLEANUP_PARAM3",
-            localize "STR_CLEANUP_PARAM4",
-            localize "STR_CLEANUP_PARAM5"
+            format [localize "STR_CLEANUP_PARAM1", 15],
+            format [localize "STR_CLEANUP_PARAM1", 20],
+            format [localize "STR_CLEANUP_PARAM1", 30],
+            format [localize "STR_CLEANUP_PARAM2", 1],
+            format [localize "STR_CLEANUP_PARAM2", 2]
         ]],
-        [GRLIB_PARAM_OptionValuesKey, [0,900,1200,1800,3600,7200]],
+        [GRLIB_PARAM_OptionValuesKey, [0,(15*60),(20*60),(30*60),(60*60),(120*60)]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_AUTO_SAVE_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
             localize "STR_AUTO_SAVE_OPT0",
-            localize "STR_AUTO_SAVE_OPT1",
-            localize "STR_AUTO_SAVE_OPT2",
-            localize "STR_AUTO_SAVE_OPT3",
-            localize "STR_AUTO_SAVE_OPT4",
-            localize "STR_AUTO_SAVE_OPT5"
+            format [localize "STR_AUTO_SAVE_OPT0", 15],
+            format [localize "STR_AUTO_SAVE_OPT0", 20],
+            format [localize "STR_AUTO_SAVE_OPT0", 30],
+            format [localize "STR_AUTO_SAVE_OPT1", 1],
+            format [localize "STR_AUTO_SAVE_OPT1", 2]
         ]]
     ]],
     [GRLIB_PARAM_TFRadioRange, createHashMapFromArray [
@@ -1374,19 +1417,28 @@ _Mission_Params = [
     [GRLIB_PARAM_RespawnCD, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 0],
         [GRLIB_PARAM_NameKey, localize "STR_RESPAWN_CD"],
-        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED","4","5","6","7","8","9","10"]],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_PARAMS_DISABLED",
+            format [localize "STR_CLEANUP_PARAM1", 4],
+            format [localize "STR_CLEANUP_PARAM1", 5],
+            format [localize "STR_CLEANUP_PARAM1", 6],
+            format [localize "STR_CLEANUP_PARAM1", 7],
+            format [localize "STR_CLEANUP_PARAM1", 8],
+            format [localize "STR_CLEANUP_PARAM1", 9],
+            format [localize "STR_CLEANUP_PARAM1", 10]
+        ]],
         [GRLIB_PARAM_OptionValuesKey, [0,240,300,360,420,480,540,600]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_RESPAWN_CD_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
             localize "STR_RESPAWN_CD_OPT0",
-            localize "STR_RESPAWN_CD_OPT1",
-            localize "STR_RESPAWN_CD_OPT2",
-            localize "STR_RESPAWN_CD_OPT3",
-            localize "STR_RESPAWN_CD_OPT4",
-            localize "STR_RESPAWN_CD_OPT5",
-            localize "STR_RESPAWN_CD_OPT6",
-            localize "STR_RESPAWN_CD_OPT7"
+            format [localize "STR_RESPAWN_CD_OPT1", 4],
+            format [localize "STR_RESPAWN_CD_OPT1", 5],
+            format [localize "STR_RESPAWN_CD_OPT1", 6],
+            format [localize "STR_RESPAWN_CD_OPT1", 7],
+            format [localize "STR_RESPAWN_CD_OPT1", 8],
+            format [localize "STR_RESPAWN_CD_OPT1", 9],
+            format [localize "STR_RESPAWN_CD_OPT1", 10]
         ]]
     ]],
     [GRLIB_PARAM_KickIdle, createHashMapFromArray [
@@ -1394,22 +1446,22 @@ _Mission_Params = [
         [GRLIB_PARAM_NameKey, localize "STR_KICK_IDLE"],
         [GRLIB_PARAM_OptionLabelKey, [
             localize "STR_PARAMS_DISABLED",
-            localize "STR_CLEANUP_PARAM1",
-            localize "STR_CLEANUP_PARAM2",
-            localize "STR_CLEANUP_PARAM3",
-            localize "STR_CLEANUP_PARAM4",
-            localize "STR_CLEANUP_PARAM5"
+            format [localize "STR_CLEANUP_PARAM1", 15],
+            format [localize "STR_CLEANUP_PARAM1", 20],
+            format [localize "STR_CLEANUP_PARAM1", 30],
+            format [localize "STR_CLEANUP_PARAM2", 1],
+            format [localize "STR_CLEANUP_PARAM2", 2]
         ]],
-        [GRLIB_PARAM_OptionValuesKey, [0,900,1200,1800,3600,7200]],
+        [GRLIB_PARAM_OptionValuesKey, [0,(15*60),(20*60),(30*60),(60*60),(120*60)]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_KICK_IDLE_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
             localize "STR_KICK_IDLE_OPT0",
-            localize "STR_KICK_IDLE_OPT1",
-            localize "STR_KICK_IDLE_OPT2",
-            localize "STR_KICK_IDLE_OPT3",
-            localize "STR_KICK_IDLE_OPT4",
-            localize "STR_KICK_IDLE_OPT5"
+            format [localize "STR_KICK_IDLE_OPT1", 15],
+            format [localize "STR_KICK_IDLE_OPT1", 20],
+            format [localize "STR_KICK_IDLE_OPT1", 30],
+            format [localize "STR_KICK_IDLE_OPT2", 1],
+            format [localize "STR_KICK_IDLE_OPT2", 2]
         ]]
     ]],
     [GRLIB_PARAM_TK_mode, createHashMapFromArray [
@@ -1439,18 +1491,6 @@ _Mission_Params = [
             format [localize "STR_TK_COUNT_OPT0", 6]
         ]]
     ]],
-    [GRLIB_PARAM_Persistent, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 0],
-        [GRLIB_PARAM_NameKey, localize "STR_PERSISTENT_MODE"],
-        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
-        [GRLIB_PARAM_OptionValuesKey, [0,1]],
-        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey],
-        [GRLIB_PARAM_DescriptionKey, localize "STR_PERSISTENT_MODE_DESC"],
-        [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_PERSISTENT_MODE_OPT0",
-            localize "STR_PERSISTENT_MODE_OPT1"
-        ]]
-    ]],
     [GRLIB_PARAM_CommanderModeEnabled, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 0],
         [GRLIB_PARAM_NameKey, localize "STR_COMMANDER_MODE"],
@@ -1466,35 +1506,44 @@ _Mission_Params = [
     [GRLIB_PARAM_CommanderModeRadius, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, GRLIB_sector_size],
         [GRLIB_PARAM_NameKey, localize "STR_COMMANDER_MODE_RADIUS"],
-        [GRLIB_PARAM_OptionLabelKey, ["500m","600m","700m","800m","900m","1000m","1500m"]],
-        [GRLIB_PARAM_OptionValuesKey, [500,600,700,800,900,1000,1500]],
+        [GRLIB_PARAM_OptionLabelKey, ["500 m","600 m","700 m","800 m","900 m","1 km","1.5 km","2 km"]],
+        [GRLIB_PARAM_OptionValuesKey, [500,600,700,800,900,1000,1500,2000]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_CommanderCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_COMMANDER_MODE_RADIUS_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_COMMANDER_MODE_RADIUS_OPT5",
-            localize "STR_COMMANDER_MODE_RADIUS_OPT6",
-            localize "STR_COMMANDER_MODE_RADIUS_OPT7",
-            localize "STR_COMMANDER_MODE_RADIUS_OPT8",
-            localize "STR_COMMANDER_MODE_RADIUS_OPT9",
-            localize "STR_COMMANDER_MODE_RADIUS_OPT10",
-            localize "STR_COMMANDER_MODE_RADIUS_OPT15"
+            format [localize "STR_COMMANDER_MODE_RADIUS_OPT0", "500 m"],
+            format [localize "STR_COMMANDER_MODE_RADIUS_OPT0", "600 m"],
+            format [localize "STR_COMMANDER_MODE_RADIUS_OPT0", "700 m"],
+            format [localize "STR_COMMANDER_MODE_RADIUS_OPT0", "800 m"],
+            format [localize "STR_COMMANDER_MODE_RADIUS_OPT0", "900 m"],
+            format [localize "STR_COMMANDER_MODE_RADIUS_OPT0", "1 km"],
+            format [localize "STR_COMMANDER_MODE_RADIUS_OPT0", "1.5 km"],
+            format [localize "STR_COMMANDER_MODE_RADIUS_OPT0", "2 km"]
         ]]
     ]],
     [GRLIB_PARAM_CommanderVoteTimeout, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 60],
         [GRLIB_PARAM_NameKey, "Vote timer duration"],
-        [GRLIB_PARAM_OptionLabelKey, ["20s","30s","60s","120s","180s","240s","300s"]],
+        [GRLIB_PARAM_OptionLabelKey, [
+            format [localize "STR_CLEANUP_PARAM0", 20],
+            format [localize "STR_CLEANUP_PARAM0", 30],
+            format [localize "STR_CLEANUP_PARAM0", 60],
+            format [localize "STR_CLEANUP_PARAM0", 120],
+            format [localize "STR_CLEANUP_PARAM0", 180],
+            format [localize "STR_CLEANUP_PARAM0", 240],
+            format [localize "STR_CLEANUP_PARAM0", 300]
+        ]],
         [GRLIB_PARAM_OptionValuesKey, [20,30,60,120,180,240,300]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_CommanderCatKey],
         [GRLIB_PARAM_DescriptionKey, "Length of the vote timer which determines how long the voting period lasts"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            "20 seconds to vote for the next sector",
-            "30 seconds to vote for the next sector",
-            "60 seconds to vote for the next sector",
-            "120 seconds to vote for the next sector",
-            "180 seconds to vote for the next sector",
-            "240 seconds to vote for the next sector",
-            "300 seconds to vote for the next sector"
+            format ["%1 seconds to vote for the next sector", 20],
+            format ["%1 seconds to vote for the next sector", 30],
+            format ["%1 seconds to vote for the next sector", 60],
+            format ["%1 seconds to vote for the next sector", 120],
+            format ["%1 seconds to vote for the next sector", 180],
+            format ["%1 seconds to vote for the next sector", 240],
+            format ["%1 seconds to vote for the next sector", 300]
         ]]
     ]],
     [GRLIB_PARAM_CommanderAutoStart, createHashMapFromArray [

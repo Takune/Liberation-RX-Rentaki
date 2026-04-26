@@ -11,7 +11,6 @@ if (_classname in [FOB_typename, FOB_outpost]) then {
 	_vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
 	_vehicle allowDamage false;
 	_vehicle enableSimulationGlobal true;
-	_vehicle hideObjectGlobal false;
 	_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 	_vehicle setPosATL _veh_pos;
 	if (GRLIB_fob_type == 2) then { deleteVehicle GRLIB_vehicle_huron };
@@ -55,17 +54,16 @@ if (_classname in ["fob_water1"]) then {
 	_vehicle = createVehicle [FOB_typename, zeropos, [], 0, "CAN_COLLIDE"];
 	_vehicle allowDamage false;
 	_vehicle enableSimulationGlobal true;
-	_vehicle hideObjectGlobal false;
 	_vehicle setVectorDirAndUp [[0,1,0], [0,0,1]];
 	_vehicle setPosASL _veh_pos;
 };
 
 if (isNull _vehicle) exitWith {
 	diag_log format ["--- LRX Error: Cannot create FOB %1 at %2", _classname, _veh_pos];
-	_player setVariable ["GRLIB_player_vehicle_build", -1, true];
 };
-[_vehicle, getPlayerUID _player] call fob_init;
+
 sleep 1;
+[_vehicle, getPlayerUID _player] call fob_init;
 
 private _fob_pos = getPosATL _vehicle;
 if (_classname in ["Land_Destroyer_01_base_F", "Land_Carrier_01_base_F"]) then {
@@ -81,5 +79,3 @@ publicVariable "GRLIB_all_outposts";
 stats_fobs_built = stats_fobs_built + 1;
 
 if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
-
-_player setVariable ["GRLIB_player_vehicle_build", _vehicle, true];

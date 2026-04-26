@@ -55,19 +55,9 @@ publicVariable "GRLIB_active_commander";
 addMissionEventHandler ["OnUserAdminStateChanged", {
 	params ["_networkId", "_loggedIn", "_votedIn"];
 	if (_loggedIn) then {
-		GRLIB_active_commander = (_networkId getUserInfo 10);
-		publicVariable "GRLIB_active_commander";
 		[true] remoteExec ["player_admin_actions", owner GRLIB_active_commander];
 	} else {
 		[false] remoteExec ["player_admin_actions", owner GRLIB_active_commander];
-		private _commander = (allPlayers select {(typeOf _x == commander_classname)});
-		if (count _commander > 0) then {
-			GRLIB_active_commander = _commander select 0;
-		} else {
-			GRLIB_active_commander = objNull;
-			{unassignCurator _x} forEach allCurators;
-		};
-		publicVariable "GRLIB_active_commander";
 	};
 }];
 
@@ -147,7 +137,7 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\game\manage_score.sqf";
 [] execVM "scripts\server\game\manage_time.sqf";
 [] execVM "scripts\server\game\manage_weather.sqf";
-[] execVM "scripts\server\game\init_marker.sqf";
+[] execVM "scripts\server\game\init_markers.sqf";
 [] execVM "scripts\server\game\manage_undercover.sqf";
 [] execVM "scripts\server\base\fob_markers.sqf";
 [] execVM "scripts\server\secondary\autostart.sqf";
@@ -165,8 +155,14 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\offloading\offload_manager.sqf";
 
 // Manage sectors
+GRLIB_battlegroup_timer = (1200 / GRLIB_csat_aggressivity);
+
+GRLIB_last_battlegroup_time = 0;
+publicVariable "GRLIB_last_battlegroup_time";
+
 GRLIB_sector_spawning = false;
 publicVariable "GRLIB_sector_spawning";
+
 if (GRLIB_Commander_mode) then {
 	// Commander functions
 	manage_sectors_commander = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_sectors_commander.sqf";
@@ -184,7 +180,6 @@ if (GRLIB_Commander_mode) then {
 global_locked_group = [];
 publicVariable "global_locked_group";
 
-sleep 2;
 GRLIB_init_server = true;
 publicVariable "GRLIB_init_server";
 diag_log "--- Server Init stop ---";

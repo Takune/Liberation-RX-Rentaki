@@ -2,7 +2,7 @@
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init_static.sqf";
 
 // Init Chimera unit look
-[] call compileFinal preprocessFileLineNumbers "scripts\server\game\chimera_units_overide.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\chimera_units_overide.sqf";
 
 // Cleanup
 kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\events\kill_manager.sqf";
@@ -10,10 +10,9 @@ cleanup_uid = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanu
 cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_player.sqf";
 
 // Load Objects
-//attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\attach_object_direct.sqf";
 load_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\load_object_direct.sqf";
-save_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\save_object_direct.sqf";
-init_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\init_object_direct.sqf";
+save_r3f_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\save_r3f_object_direct.sqf";
+save_lrx_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\save_lrx_object_direct.sqf";
 
 // AI
 add_civ_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_civ_waypoints.sqf";
@@ -100,7 +99,6 @@ ammo_add_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\re
 ammo_del_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ammo_del_remote_call.sqf";
 build_cutter_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\build_cutter_remote_call.sqf";
 build_fob_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\build_fob_remote_call.sqf";
-build_vehicle_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\build_vehicle_remote_call.sqf";
 call_artillery_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\call_artillery_remote_call.sqf";
 destroy_fob_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\destroy_fob_remote_call.sqf";
 destroy_static_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\destroy_static_remote_call.sqf";

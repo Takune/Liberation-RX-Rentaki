@@ -12,10 +12,7 @@ _setupVars = {
 
 _setupObjects = {
 	// Check Box
-	private _boxes_amount = 0;
-	{
-		if ( _x select 0 == a3w_truck_open ) exitWith { _boxes_amount = (count _x) - 2 };
-	} foreach box_transport_config;
+	private _boxes_amount = [a3w_truck_open] call F_getVehicleMaxLoad;
 	if ( _boxes_amount == 0 ) exitWith {
 		diag_log format ["Opfor ammobox truck (%1) doesn't allow for ammobox transport, correct your classnames!",  a3w_truck_open];
 		false;
@@ -66,7 +63,7 @@ _setupObjects = {
 			private _boxclass = selectRandom [ammobox_o_typename, waterbarrel_typename, fuelbarrel_typename, repairbox_typename, basic_weapon_typename];
 			[_vehicle2, _boxclass] call attach_object_direct;
 		};
-		_ressources = _vehicle2 getVariable ["GRLIB_ammo_truck_load", []];
+		_ressources = _vehicle2 getVariable ["GRLIB_ammo_vehicle_load", []];
 
 		// wait
 		(driver _vehicle2) doMove (_convoy_destinations select 1);

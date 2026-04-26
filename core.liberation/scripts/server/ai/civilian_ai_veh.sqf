@@ -11,7 +11,7 @@ if (([_vehicle, _blacklist_class] call F_itemIsInClass)) exitWith {};
 if (tolower (typeOf _vehicle) find "bicycle" > -1) exitWith {};
 if (count (crew _vehicle) == 0) exitWith {};
 if (count (units _grp) == 0) exitWith {};
-if (!local _vehicle) exitWith { [_vehicle, _grp] remoteExec ["civilian_ai_veh", owner _vehicle] };
+if (!local _vehicle) exitWith {};
 
 // must match speak_manger.sqf (_msg)
 #define _incd_repair 20
@@ -97,7 +97,7 @@ while { alive _vehicle && alive _driver } do {
 	if (_event_stared) then {
 		_helped = false;
 		if (_incd == _incd_repair && ([_vehicle] call F_getVehicleDamage) < _vehicle_damage) then { _helped = true };
-		if (_incd == _incd_fuel && fuel _vehicle >= 0.4) then { _helped = true };
+		if (_incd == _incd_fuel && fuel _vehicle >= 0.2) then { _helped = true };
 		if (time > _wait_max) then { _helped = true };
 
 		if (_helped) then {

@@ -99,6 +99,10 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 					_hascrew = _x getVariable ["GRLIB_fob_type", FOB_typename];
 					buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner];
 				};
+				if (_nextclass in [storage_medium_typename, cargo_sling_typename]) exitWith {
+					private	_lst_lrx = [_x] call save_lrx_object_direct;
+					buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _lst_lrx];
+				};
 				if (_owner == "") exitWith {
 					buildings_to_save pushback [_nextclass, _savedpos, _nextdir];
 				};
@@ -108,14 +112,8 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 				if (_owner in _keep_score_id) then {
 					if (_nextclass in GRLIB_vehicles_light) then {
 						private _default = true;
-						if (_nextclass == storage_medium_typename) then {
-							private	_lst_grl = [];
-							{_lst_grl pushback (typeOf _x)} forEach (_x getVariable ["GRLIB_ammo_truck_load", []]);
-							buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _lst_grl];
-							_default = false;
-						};
 						if (_nextclass == box_uavs_typename) then {
-							private _loaded_uavs = [_x] call save_object_direct;
+							private _loaded_uavs = [_x] call save_r3f_object_direct;
 							if (count _loaded_uavs > 0) then {
 								buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _loaded_uavs];
 							};
@@ -129,12 +127,11 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 						private _color = "";
 						private _color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
 						private _compo = _x getVariable ["GRLIB_vehicle_composant", []];
-						private _lst_a3 = [];
-						private	_lst_r3f = [_x] call save_object_direct;
-						private	_lst_grl = [];
+						private _lst_a3 = []; //[_x, true] call F_getCargo;
+						private	_lst_r3f = [_x] call save_r3f_object_direct;
+						private	_lst_lrx = [_x] call save_lrx_object_direct;
 						if ([_x] call F_vehicleSafeZone) then { _owner = "" };
-						{ if !(isNull _x) then { _lst_grl pushback (typeOf _x) } } forEach (_x getVariable ["GRLIB_ammo_truck_load", []]);
-						buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_grl, _compo];
+						buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_lrx, _compo];
 					};
 				};
 			};

@@ -239,6 +239,7 @@ support_vehicles append [
 	[fuel_sling_typename,0,150,60,GRLIB_perm_log],
 	[ammo_sling_typename,0,400,0,GRLIB_perm_log],
 	[medic_sling_typename,0,200,0,GRLIB_perm_log],
+	[cargo_sling_typename,0,50,0,GRLIB_perm_log],
 	[ammo_truck_typename,5,400,10,GRLIB_perm_tank],
 	[repair_truck_typename,5,200,30,GRLIB_perm_tank],
 	[fuel_truck_typename,5,150,70,GRLIB_perm_tank],
@@ -435,8 +436,7 @@ vehicle_refuel_sources = [
 	fuel_truck_typename,
 	opfor_fuel_truck,
 	opfor_fuel_container,
-	"C_Van_01_fuel_F",
-	"Land_fs_feed_F"
+	"C_Van_01_fuel_F"
 ] + vehicle_refuel_sources_west;
 
 // *** VEHICLE PRESET INVENTORY ***
@@ -488,6 +488,8 @@ if (isNil "vehicle_preset_inventory_east") then {
 // *** TRANSPORT CONFIG ***
 box_transport_config = [];
 box_transport_offset = [];
+box_transport_big_config = [];
+box_transport_big_offset = [];
 
 [] call compileFinal preprocessFileLineNumbers "default\default_classnames_transport.sqf";
 _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_west];
@@ -496,9 +498,13 @@ _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_east];
 [_path] call F_getTemplateFile;
 
 transport_vehicles = box_transport_config apply { _x select 0 };
+transport_big_vehicles = box_transport_big_config apply { _x select 0 };
+transport_vehicles append transport_big_vehicles;
 transport_vehicles = transport_vehicles arrayIntersect transport_vehicles;
 
 box_transport_loadable = box_transport_offset apply { _x select 0 };
+box_transport_big_loadable = box_transport_big_offset apply { _x select 0 };
+box_transport_loadable append box_transport_big_loadable;
 box_transport_loadable = box_transport_loadable arrayIntersect box_transport_loadable;
 
 // Big_units
@@ -507,7 +513,9 @@ vehicle_big_units = [
 	"VTOL_01_base_F",
 	"VTOL_02_base_F",
 	"Land_SM_01_shed_F",
-	"Land_Hangar_F"
+	"Land_Hangar_F",
+	"Land_Airport_01_hangar_F",
+	"Land_TentHangar_V1_F"
 ] + vehicle_big_west + vehicle_big_east;
 vehicle_big_units = vehicle_big_units arrayIntersect vehicle_big_units;
 
@@ -578,14 +586,35 @@ private _buildings_to_delete = [];
 } forEach buildings;
 buildings = buildings - _buildings_to_delete;
 
-// FOB Defense buildings
-[] call compileFinal preprocessFileLineNumbers "addons\FOB\fob_defense_init.sqf";
+all_lrx_buildings_classnames = buildings apply { _x select 0 };
 
-private _objects_to_build = [];
+// FOB Template
+all_fob_buildings_classnames = [];
 if (GRLIB_naval_type == 3) then {
 	private _objects_to_build = ([] call compile preprocessFileLineNumbers format ["scripts\fob_templates\%1.sqf", FOB_carrier]);
+	{ all_fob_buildings_classnames pushBackUnique (_x select 0) } forEach _objects_to_build;
 };
-all_buildings_classnames = (buildings + _objects_to_build) apply { _x select 0 };
+
+// FOB Defense buildings
+all_fob_defense_classnames = [];
+[] call compileFinal preprocessFileLineNumbers "addons\FOB\fob_defense_init.sqf";
+fob_defenses_blacklist = [] + GRLIB_recycleable_blacklist + all_friendly_classnames + all_hostile_classnames;
+{
+    private _defense_path = (_x select 1);
+    if (count _defense_path > 0) then {
+	    private _objects_to_build = ([] call compile preprocessFileLineNumbers _defense_path);
+	    {
+            _class = (_x select 0);
+            if (_class in fob_defenses_blacklist) then {
+                diag_log format ["--- LRX Defense filter: in %1 - object %2 rejected!", _defense_path, _class];
+            } else {
+                all_fob_defense_classnames pushBackUnique _class;
+            };
+        } forEach _objects_to_build;
+    };
+} forEach GRLIB_FOB_Defense;
+
+all_buildings_classnames = all_lrx_buildings_classnames + all_fob_buildings_classnames + all_fob_defense_classnames;
 all_buildings_classnames = all_buildings_classnames arrayIntersect all_buildings_classnames;
 
 // Recyclable
@@ -600,6 +629,36 @@ GRLIB_recycleable_info = (light_vehicles + heavy_vehicles + air_vehicles + stati
 
 // AIR DROP
 [] call compileFinal preprocessFileLineNumbers format ["default\default_airdrop_classnames.sqf"];
+
+// Camo Net
+GRLIB_camo_net = ["CamoNet_BLUFOR_F"];
+if (GRLIB_CUP_enabled) then {
+	GRLIB_camo_net append [
+		"Land_CamoNet_NATO",
+		"Land_CamoNetVar_NATO",
+		"Land_CamoNetB_NATO",
+		"Land_CamoNet_EAST",
+		"Land_CamoNetVar_EAST",
+		"Land_CamoNetB_EAST",
+		"Land_CamoNet_NATO_EP1",
+		"Land_CamoNetVar_NATO_EP1",
+		"Land_CamoNetB_NATO_EP1",
+		"Land_CamoNet_EAST_EP1",
+		"Land_CamoNetVar_EAST_EP1",
+		"Land_CamoNetB_EAST_EP1"
+	];
+};
+
+// Quick delete MP Event
+GRLIB_quick_delete = [
+	Arsenal_typename,
+	FOB_box_typename,
+	foodbarrel_typename,
+	waterbarrel_typename,
+	medic_heal_typename,
+	"Land_MedicalTent_01_base_F",
+	"Shelter_base_F"
+] + GRLIB_camo_net;
 
 // Filter Mods
 diag_log "--- LRX: Check Classnames ---";
@@ -638,6 +697,7 @@ opfor_squad_low_intensity = [
 	opfor_sentry,
 	opfor_sentry
 ];
+
 opfor_squad_8_standard = [
 	opfor_squad_leader,
 	opfor_medic,
@@ -649,6 +709,7 @@ opfor_squad_8_standard = [
 	opfor_marksman,
 	opfor_grenadier
 ];
+
 opfor_squad_8_infkillers = [
 	opfor_squad_leader,
 	opfor_medic,
@@ -662,6 +723,7 @@ opfor_squad_8_infkillers = [
 	opfor_rifleman,
 	opfor_rpg
 ];
+
 opfor_squad_8_tankkillers = [
 	opfor_squad_leader,
 	opfor_medic,
@@ -673,6 +735,7 @@ opfor_squad_8_tankkillers = [
 	opfor_at,
 	opfor_at
 ];
+
 opfor_squad_8_airkillers = [
 	opfor_squad_leader,
 	opfor_medic,
@@ -741,6 +804,7 @@ GRLIB_ignore_colisions = [
 	FOB_truck_typename,
 	FOB_boat_typename,
 	FOB_box_outpost,
+	FOB_Man,
 	huron_typename,
 	Arsenal_typename,
 	mobile_respawn,
@@ -754,8 +818,6 @@ GRLIB_ignore_colisions = [
 	"StaticMGWeapon",
 	"StaticGrenadeLauncher",
 	"StaticMortar",
-	"CamoNet_BLUFOR_open_F",
-	"CamoNet_BLUFOR_big_F",
 	"Land_NavigLight",
 	"Lamps_base_F",
 	"Helipad_base_F",

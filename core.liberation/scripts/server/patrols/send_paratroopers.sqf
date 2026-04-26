@@ -36,19 +36,19 @@ private _go_target = {
 	if (isNull _grp) exitWith {};
 	if ({alive _x} count (units _grp) == 0) exitWith {};
 	[_grp] call F_deleteWaypoints;
-	private _waypoint = _grp addWaypoint [_target, 100];
+	private _waypoint = _grp addWaypoint [_target, 50];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "FULL";
-	_waypoint setWaypointBehaviour "AWARE";
-	_waypoint setWaypointCombatMode "WHITE";
+	_waypoint setWaypointBehaviour "SAFE";
+	_waypoint setWaypointCombatMode "YELLOW";
 	_waypoint setWaypointCompletionRadius 300;
-	sleep 3;
+
 	_waypoint = _grp addWaypoint [_spawnpos, 0];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "FULL";
-	_waypoint setWaypointBehaviour "AWARE";
-	_waypoint setWaypointCombatMode "YELLOW";
-	_waypoint setWaypointCompletionRadius 400;
+	_waypoint setWaypointBehaviour "CARELESS";
+	_waypoint setWaypointCombatMode "BLUE";
+	_waypoint setWaypointCompletionRadius 300;
 	_waypoint setWaypointStatements ["true", "[vehicle this, true, true] spawn F_vehicleClean"];
 	{_x doFollow (leader _grp)} foreach units _grp;
 };
@@ -74,6 +74,12 @@ private _para_group = [_spawnpos, _unitclass, GRLIB_side_enemy, "para"] call F_l
 // Move to obj
 [_vehicle, 3600] call F_setUnitTTL;
 [_pilot_group, _targetpos, getPosATL _vehicle] call _go_target;
+[_vehicle] spawn {
+	params ["_vehicle"];
+	sleep 300;
+	if (!alive _vehicle) exitWith {};
+	[_vehicle, true, true] spawn F_vehicleClean;
+};
 
 if (floor random 3 == 0) then {
 	if (count opfor_air > 0) then {
@@ -83,6 +89,12 @@ if (floor random 3 == 0) then {
 		_escort_veh flyInHeight 350;
 		[_escort_veh, 1800] call F_setUnitTTL;
 		[_escort_group, _targetpos, _escort_veh] call _go_target;
+		[_escort_veh] spawn {
+			params ["_vehicle"];
+			sleep 300;
+			if (!alive _vehicle) exitWith {};
+			[_vehicle, true, true] spawn F_vehicleClean;
+		};
 	};
 };
 

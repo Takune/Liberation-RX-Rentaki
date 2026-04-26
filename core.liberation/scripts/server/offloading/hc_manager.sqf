@@ -18,6 +18,7 @@ GRLIB_hide_opfor = [GRLIB_PARAM_HideOpfor] call lrx_getParamValue;
 GRLIB_MineProbability = [GRLIB_PARAM_MineProbability] call lrx_getParamValue;
 GRLIB_night_factor = [GRLIB_PARAM_NightDuration] call lrx_getParamValue;
 GRLIB_vulnerability_timer = [GRLIB_PARAM_VulnerabilityTimer] call lrx_getParamValue;
+GRLIB_battlegroup_timer = (1200 / GRLIB_csat_aggressivity);
 
 // Cleanup
 kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\events\kill_manager.sqf";
@@ -59,7 +60,7 @@ manage_intels = compileFinal preprocessFileLineNumbers "scripts\server\sector\ma
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
 spawn_defenders = compileFinal preprocessFileLineNumbers "scripts\server\sector\spawn_defenders.sqf";
 
-//Various
+// Various
 boxSetup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_boxSetup.sqf";
 createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createLandMines.sqf";
 showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLandMines.sqf";
@@ -68,5 +69,27 @@ cleanMissionVehicles = compileFinal preprocessFileLineNumbers "scripts\server\a3
 createCustomGroup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createCustomGroup.sqf";
 
 [] execVM "scripts\server\offloading\show_fps_hc.sqf";
+
+// Facilities
+GRLIB_Marker_ATM = [];
+GRLIB_Marker_REP = [];
+GRLIB_Marker_FUEL = [];
+GRLIB_Marker_SELL = [];
+GRLIB_Marker_SHOP = [];
+
+waituntil { sleep 1; !isNil "GRLIB_marker_init" };
+
+{
+    private _name = _x;
+    private _pos = markerPos _x;
+
+    switch (true) do {
+        case (_name select [0,10] == "marked_atm"):  { GRLIB_Marker_ATM  pushBack _pos };
+        case (_name select [0,10] == "marked_rep"):  { GRLIB_Marker_REP  pushBack _pos };
+        case (_name select [0,11] == "marked_fuel"): { GRLIB_Marker_FUEL pushBack _pos };
+        case (_name select [0,11] == "marked_sell"): { GRLIB_Marker_SELL pushBack _pos };
+        case (_name select [0,11] == "marked_shop"): { GRLIB_Marker_SHOP pushBack _pos };
+    };
+} forEach (allMapMarkers select { _x select [0,7] == "marked_" });
 
 diag_log "--- HC Server Init stop ---";

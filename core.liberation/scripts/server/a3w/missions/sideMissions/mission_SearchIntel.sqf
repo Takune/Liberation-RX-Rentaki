@@ -1,7 +1,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_intels", "_managed_units", "_grp_civ1", "_grp_civ2"];
+private ["_intels", "_managed_units", "_grp_civ1", "_grp_civ2", "_mission_markers"];
 
 _setupVars = {
 	_missionType = "STR_SEARCH_INTEL";
@@ -10,49 +10,29 @@ _setupVars = {
 };
 
 _setupObjects = {
-	_missionPos = [(markerpos _missionLocation), 5, 0] call F_findRandomPlace;
+	private _all_possible_sectors = ([SpawnMissionMarkers] call checkSpawn) apply { _x select 0 };
+	if (count _all_possible_sectors == 0) exitWith {
+		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
+		false;
+	};
+	_missionPos = [_all_possible_sectors, 40] call F_findFlatPlace;
 	if (count _missionPos == 0) exitWith {
-    	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
-    	false;
+		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
+		false;
 	};
 
 	private _buildings = [
-		"Land_i_Barracks_V1_F",
-		"Land_i_Barracks_V2_F",
-		"Land_u_Barracks_V2_F",
 		"Land_GH_House_1_F",
 		"Land_GH_House_2_F",
 		"Land_u_Addon_02_V1_F",
 		"Land_u_House_Small_01_V1_F",
+		"Land_i_House_Small_01_V2_F",
+		"Land_i_House_Small_01_V3_F",
 		"Land_u_House_Small_02_V1_F",
+		"Land_i_House_Small_02_V1_F",
+		"Land_i_House_Small_02_V2_F",
+		"Land_i_House_Small_02_V3_F",
 		"Land_i_Stone_HouseSmall_V3_F"
-	];
-
-	private _wrecks = [
-		"Land_Wreck_UAZ_F",
-		"Land_Wreck_Ural_F",
-		"Land_Wreck_Truck_dropside_F",
-		"Land_Wreck_Truck_F",
-		"Land_Wreck_HMMWV_F",
-		"Land_Wreck_Hunter_F",
-		"Land_Wreck_Skodovka_F",
-		"Land_V3S_wreck_F",
-		"Land_Wreck_Van_F",
-		"Land_Wreck_Car2_F",
-		"Land_Wreck_Car3_F",
-		"Land_Wreck_Car_F",
-		"Land_Wreck_Offroad_F",
-		"Land_Wreck_Offroad2_F"
-	];
-
-	private _skel = [
-		"Land_HumanSkull_F",
-		"Land_HumanSkeleton_F",
-		"Land_DeerSkeleton_full_01_F",
-		"Land_DeerSkeleton_damaged_01_F",
-		"Land_DeerSkeleton_pile_01_F",
-		"Land_HumanSkull_F",
-		"Land_HumanSkeleton_F"
 	];
 
 	private _statues = [
@@ -63,75 +43,62 @@ _setupObjects = {
 	];
 
 	//----- build village ---------------------------------
-	_missionPos = ([_missionPos, 100] call F_getRandomPos);
 	_vehicle = createVehicle [selectRandom _statues, _missionPos, [], 1, "None"];
 	_vehicle setVariable ["R3F_LOG_disabled", true, true];
+	private _town_center = getPosATL _vehicle;
+	private _vrac_list = [];
+	private _build_list = [];
 
-	private _build_list  = [];
-	private ["_pos", "_dir"];
-	for "_i" from 1 to 5 do {
-		_pos = [getPosATL _vehicle, 20, 0, 150] call F_findSafePlace;
-		if (count _pos > 0) then {
-			_dir = random 360;
-			_build = createVehicle [selectRandom _buildings, _pos, [], 1, "None"];
-			_build setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];
+	// Lamps
+	private _lamp = createVehicle ["Land_LampStreet_02_triple_F", zeropos, [], 15, "None"];
+	_lamp setPos ([_town_center, 3] call F_getRandomPos);
+	_vrac_list pushBack _lamp;
+	private _angle = 0;
+	for "_i" from 1 to 7 do {
+		_nextpos = (_town_center getPos [45, _angle]);
+		_lamp = createVehicle ["Land_LampStreet_02_triple_F", zeropos, [], 15, "None"];
+		_dir = floor random 360;
+		_lamp setVectorDirAndUp [[sin _dir, cos _dir, 0], [0, 0, 1]];
+		_lamp setPosATL _nextpos;
+		_angle = _angle + 45;
+		_vrac_list pushBack _lamp;
+	};
+
+	// Houses
+	private ["_nextpos", "_dir"];
+	private _angle = 0;
+	for "_i" from 1 to 4 do {
+		_nextpos = (_town_center getPos [35, _angle]);
+		_nextpos = [_nextpos, 15, 0, 50] call F_findSafePlace;
+		if (count _nextpos > 0) then {
+			_dir = floor random 360;
+			private _build = createVehicle [selectRandom _buildings, zeropos, [], 1, "None"];
+			_build setVectorDirAndUp [[sin _dir, cos _dir, 0], [0, 0, 1]];
+			_build setPosATL _nextpos;
 			_build_list pushBack _build;
 		};
-		sleep 0.2;
-	};
-	if (count _build_list < 3) exitWith {
-    	diag_log format ["--- LRX Error: side mission %1, cannot create buildings at %2!", localize _missionType, _missionPos];
-    	false;
-	};
-	private _vrac_list = [];
-	for "_i" from 1 to 7 do {
-		_pos = (getPosATL (selectRandom _build_list)) findEmptyPosition [10, 50, "B_Heli_Transport_01_F"];
-		if (count _pos == 3) then {
-			_wreck = createVehicle [selectRandom _wrecks, _pos, [], 1, "None"];
-			_dir = random 360;
-			_wreck setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];
-			_wreck enableSimulationGlobal false;
-			_vrac_list pushBack _wreck;
-			sleep 0.2;
-		};
-	};
-
-	for "_i" from 1 to 8 do {
-		_lamp = createVehicle ["Land_LampStreet_02_triple_F", (getPosATL (selectRandom _build_list)), [], 15, "None"];
-		_lamp setDir (random 360);
-		_vrac_list pushBack _lamp;
-		sleep 0.2;
-	};
-
-	for "_i" from 1 to 10 do {
-		_wreck = createVehicle [selectRandom _skel, (getPosATL (selectRandom _build_list)), [], 30, "None"];
-		_wreck setDir (random 360);
-		_wreck enableSimulationGlobal false;
-		_vrac_list pushBack _wreck;
-		sleep 0.2;
+		_angle = _angle + 90;
+		sleep 0.1;
 	};
 
 	//----- spawn intels ---------------------------------
-	_intels = [getPosATL (_build_list select 0)] call manage_intels;
+	_intels = [_town_center] call manage_intels;
 	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach (_build_list + _vrac_list + _intels);
-	_vehicles =  _build_list + _vrac_list;
-	sleep 0.5;
 
 	//----- spawn units ---------------------------------
 	_managed_units = (["infantry", ([] call getNbUnits), _missionPos] call F_buildingSquad);
-	sleep 0.5;
 
 	//----- spawn civilians ---------------------------------
 	_grp_civ1 = [_missionPos, 3] call F_spawnCivilians;
 	[_grp_civ1, _missionPos] spawn add_civ_waypoints;
-	sleep 0.5;
 	_grp_civ2 = [_missionPos, 3] call F_spawnCivilians;
 	[_grp_civ2, _missionPos] spawn add_civ_waypoints;
-	sleep 0.5;
 
 	//----- spawn mines ---------------------------------
-	[_missionPos, 30] call createlandmines;
+	[_missionPos, 40] call createlandmines;
+	_mission_markers = [];
 
+	_vehicles = _build_list + _vrac_list;
 	//_missionPicture = getText (configFile >> "CfgVehicles" >> "Land_i_Barracks_V1_F" >> "picture");
 	_missionHintText = ["STR_SEARCH_INTEL_MESSAGE1", count _intels]; ;
 	true;
@@ -139,10 +106,24 @@ _setupObjects = {
 
 _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
-_waitUntilSuccessCondition = { (count (_intels select { alive _x }) == 0) };
+_waitUntilSuccessCondition = { ({ alive _x } count _intels == 0) };
 
 _waitUntilCondition = {
 	private _ret = false;
+
+	if ({ alive _x } count _managed_units == 0) then {
+		{ deleteMarker _x } forEach _mission_markers;
+		_mission_markers = [];
+		{
+			if (alive _x) then {
+				private _marker = createMarkerLocal [format ["missionintel_%1", (_x call BIS_fnc_netId)], getPos _x];
+				_marker setMarkerColorLocal "ColorOrange";
+				_marker setMarkerType "loc_search";
+				_mission_markers pushBack _marker;
+			};
+		} forEach _intels;
+	};
+
 	private _grp = group (_managed_units select 0);
 	{
 		if (_grp knowsAbout _x == 4) then { _ret = true };
@@ -171,6 +152,7 @@ _failedExec = {
 	{ deleteVehicle _x } forEach _intels;
 	{ deleteVehicle _x } forEach (units _grp_civ1) + (units _grp_civ2);
 	{ deleteVehicle _x } forEach _managed_units;
+	{ deleteMarker _x } forEach _mission_markers;
 	[_missionPos] call clearlandmines;
 };
 
@@ -186,6 +168,7 @@ _successExec = {
 	_successHintMessage = "STR_SEARCH_INTEL_MESSAGE2";
 	{ deleteVehicle _x } forEach (units _grp_civ1) + (units _grp_civ2);
 	{ deleteVehicle _x } forEach _managed_units;
+	{ deleteMarker _x } forEach _mission_markers;
 	[_missionPos] spawn {
 		params ["_pos"];
 		[_pos] call showlandmines;

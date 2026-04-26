@@ -1,6 +1,10 @@
 params ["_start_pos", "_radius"];
 
-private _ret_pos = (_start_pos getPos [_radius, floor random 360]);
-if (_ret_pos select 2 <= 0) then { _ret_pos set [2, 0.3] };
+private _pos = (_start_pos getPos [_radius, floor random 360]);
+while { surfaceIsWater _pos } do {
+     _pos = (_start_pos getPos [_radius, floor random 360]);
+    sleep 0.1;
+};
 
-_ret_pos;
+_pos set [2, 0];
+_pos;

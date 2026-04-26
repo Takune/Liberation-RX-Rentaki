@@ -3,7 +3,7 @@ params ["_grp", "_vehicles", ["_objective_pos", []]];
 if (count _vehicles == 0) exitWith {};
 
 // Group Behaviour
-_grp setBehaviourStrong "AWARE";
+_grp setBehaviourStrong "SAFE";
 _grp setCombatMode "GREEN";
 
 if (count _vehicles == 1) then {
@@ -89,6 +89,7 @@ if (_convoy_attacked) then {
 			};
 			if (!alive _vehicle) exitWith {};
 			sleep 1;
+			_vehicle lock 0;
 			{
 				[_x, false] spawn F_ejectUnit;
 				sleep 0.2;
@@ -104,6 +105,7 @@ if (_convoy_attacked) then {
 
 	_grp setFormation "WEDGE";
 	_grp setSpeedMode "NORMAL";
+	_grp setBehaviourStrong "AWARE";
 
 	if ({alive _x} count (units _grp) > 0) then {
 		if (count _objective_pos > 0) then {

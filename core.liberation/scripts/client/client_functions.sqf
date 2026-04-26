@@ -1,9 +1,11 @@
 // Local functions
 airdrop_call = compileFinal preprocessFileLineNumbers "scripts\client\misc\airdrop_call.sqf";
 artillery_cooldown = compileFinal preprocessFileLineNumbers "scripts\client\misc\artillery_cooldown.sqf";
+build_customize = compileFinal preprocessFileLineNumbers "scripts\client\build\build_customize.sqf";
 cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
 do_build_squad = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_squad.sqf";
 do_build_unit = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_unit.sqf";
+do_build_vehicle = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_vehicle.sqf";
 do_dog = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_dog.sqf";
 do_eject = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_eject.sqf";
 do_onboard = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_onboard.sqf";

@@ -17,7 +17,7 @@ if (_info) then {
 
 _vehicle allowDamage false;
 
-private	_lst_grl = [];
+private	_lst_lrx = [];
 private ["_object", "_offset"];
 {
 	_object = _x;
@@ -27,16 +27,13 @@ private ["_object", "_offset"];
 		round ((_offset select 1) * 100) / 100,
 		round ((_offset select 2) * 100) / 100
 	];
-	_lst_grl pushBack [_object, _offset];
-} forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
-
-waitUntil {sleep 0.1; (getPos _vehicle select 2) <= _open_parachute};
-{
-	_object = _x select 0;
 	detach _object;
 	_object hideObjectGlobal true;
-} forEach _lst_grl;
-sleep 0.5;
+	_object enableSimulationGlobal false;	
+	_lst_lrx pushBack [_object, _offset];
+} forEach (_vehicle getVariable ["GRLIB_ammo_vehicle_load", []]);
+
+waitUntil {sleep 0.1; (getPos _vehicle select 2) <= _open_parachute};
 
 private _pos = getPos _vehicle;
 private _parachute = createVehicle ["B_Parachute_02_F", _pos, [], 0, "NONE"];
@@ -44,14 +41,6 @@ _parachute disableCollisionWith _vehicle;
 _parachute disableCollisionWith _source;
 _parachute setVelocity (velocity _vehicle);
 _vehicle attachTo [_parachute, [0,0,0.6]];
-
-sleep 2;
-{
-	_object = _x select 0;
-	_offset = _x select 1;
-	_object attachTo [_vehicle, _offset];
-	_object hideObjectGlobal false;
-} forEach _lst_grl;
 
 private _timeout = time + 150;
 waitUntil {sleep 0.1;((getPos _vehicle select 2) < _start_smoke || time > _timeout)};
@@ -64,9 +53,17 @@ waitUntil {sleep 0.1; ((getPos _vehicle select 2) < 7 || time > _timeout)};
 detach _smoke1;
 detach _smoke2;
 detach _vehicle;
+sleep 1;
+{
+	_object = _x select 0;
+	_offset = _x select 1;
+	_object attachTo [_vehicle, _offset];
+	if (_object isKindOf "Cargo_base_F") then { _object setDir 270 };
+	_object hideObjectGlobal false;
+	_object enableSimulationGlobal true;
+} forEach _lst_lrx;
 sleep 3;
 deleteVehicle _parachute;
-sleep 1;
 [_vehicle] call F_vehicleUnflip;
 sleep 3;
 _vehicle allowDamage true;

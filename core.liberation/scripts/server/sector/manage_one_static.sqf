@@ -15,7 +15,7 @@ while {alive _static} do {
     [_static] call F_vehicleUnflip;
 
     if (_static_class in static_vehicles_AI) then {
-        _near_arsenal = ([_static, "REAMMO", 80] call F_check_near);
+        _near_arsenal = ([_static, "REAMMO", 50] call F_check_near);
         _vehicle_need_ammo = (([_static] call F_getVehicleAmmoDef) <= 0.85);
 	    if (_near_arsenal && _vehicle_need_ammo) then {
             _timer = _static getVariable ["GREUH_rearm_timer", 0];
@@ -25,7 +25,7 @@ while {alive _static} do {
             };
         };
 
-        _near_repair = ([_static, "REPAIR", 80] call F_check_near);
+        _near_repair = ([_static, "REPAIR", 50] call F_check_near);
         _vehicle_need_repair = [_static] call F_vehicleNeedRepair;
         if (_near_repair && _vehicle_need_repair) then {
             _timer = _static getVariable ["GREUH_repair_timer", 0];
@@ -38,6 +38,7 @@ while {alive _static} do {
         if (count crew _static > 0) then {
             _gunner = gunner _static;
             if (isPlayer _gunner) exitWith {};
+            if (_gunner getVariable ["GRLIB_is_prisoner", false]) exitWith { [_gunner] spawn F_ejectUnit };
             if (side group _gunner == GRLIB_side_enemy) then {
                 // OPFor infinite Ammo + Seek
                 _static setVehicleAmmo 1;
@@ -46,8 +47,9 @@ while {alive _static} do {
         } else {
             if (_static_class in opfor_statics && (_static getVariable ["R3F_LOG_disabled", false])) then {
                 [_static] call F_searchGunner;
+                sleep 20;
             };
         };
     };
-    sleep 30;
+    sleep 10;
 };

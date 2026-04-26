@@ -139,9 +139,13 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	[repair_truck_typename, 0],
 	["Quadbike_01_base_F", 3],
 	["Tank_F", 50],
+	["B_Truck_01_flatbed_F", 15],
+	["B_T_Truck_01_flatbed_F", 15],
+	["O_Truck_03_transport_F", 15],
+	["O_T_Truck_03_transport_ghex_F", 15],
 	["Truck_F", 100],
-	["Hatchback_01_base_F", 5],
-	["SUV_01_base_F", 5],
+	["Hatchback_01_base_F", 7],
+	["SUV_01_base_F", 7],
 	["Offroad_01_base_F", 10],
 	["Offroad_02_base_F", 10],
 	["Offroad_01_repair_base_F", 7],
@@ -226,19 +230,19 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	[fuelbarrel_typename, 10],
 	[foodbarrel_typename, 10],
 	[medicalbox_typename, 2],
-	[repair_sling_typename, 85],
-	[fuel_sling_typename, 85],
-	[ammo_sling_typename, 85],
-	[medic_sling_typename, 85],
 	[basic_weapon_typename, 7],
+	[canister_fuel_typename, 1],
 	[box_uavs_typename, 30],
 	[a3w_sd_item, 1],
-	["ReammoBox_F", 10],
-	["Box_NATO_Wps_F", 5],
-	["Box_NATO_Ammo_F", 5],
+	[Box_Weapon_typename, 5],
+	[Box_Ammo_typename, 5],
+	[Box_Support_typename, 5],
+	[Box_Launcher_typename, 5],
+	[Box_Special_typename, 5],
+	[Box_Explosives_typename, 5],
+	[Box_Grenades_typename, 5],
+	[Box_Equipment_typename, 5],
 	["Land_PierLadder_F", 1],
-	["Box_NATO_Support_F", 6],
-	[canister_fuel_typename, 1],
 	["Land_RampConcreteHigh_F", 10],
 	["Land_TentLamp_01_suspended_F", 1],
     ["Land_TentLamp_01_suspended_red_F", 1]
@@ -264,6 +268,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	fuel_sling_typename,
 	ammo_sling_typename,
 	medic_sling_typename,
+	cargo_sling_typename,
 	basic_weapon_typename,
 	canister_fuel_typename,
 	repair_station_typename,
@@ -281,8 +286,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_BagBunker_Small_F",
 	"Land_RampConcreteHigh_F",
 	//"Land_BagBunker_Tower_F",
-	"CamoNet_BLUFOR_open_F",
-	"CamoNet_BLUFOR_big_F"
+	"CamoNet_BLUFOR_F"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
@@ -297,7 +301,12 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	repairbox_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,
-	basic_weapon_typename
+	basic_weapon_typename,
+	repair_sling_typename,
+	fuel_sling_typename,
+	ammo_sling_typename,
+	medic_sling_typename,
+	cargo_sling_typename
 ];
 //--------------- Static ---------------
 
@@ -361,7 +370,6 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_WaterBarrel_F",
 	"Land_BarGate_F",
 	"Land_MetalCase_01_large_F",
-	"CargoNet_01_box_F",
 	"Land_CampingChair_V1_F",
 	"Land_CampingChair_V2_F",
 	"Land_CampingTable_F",
@@ -399,7 +407,6 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["Land_WaterBarrel_F", 5],
 	["Land_BarGate_F", 5],
 	["Land_MetalCase_01_large_F", 5],
-	["CargoNet_01_box_F", 5],
 	["Land_CampingChair_V1_F", 5],
 	["Land_CampingChair_V2_F", 5],
 	["Land_CampingTable_F", 5],
