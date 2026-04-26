@@ -83,3 +83,13 @@ if (count (units GRLIB_player_group) > 1) then {
         _x setVariable ["PAR_Grp_AI", GRLIB_player_group];
     } forEach PAR_AI_bros;
 };
+
+if (isNil "GRLIB_delete_old_unit") then {
+    GRLIB_delete_old_unit = (["GRLIB_delete_old_unit", 1] call BIS_fnc_getParamValue) == 1;
+};
+
+// Removal of the body after death
+if (GRLIB_delete_old_unit) then {
+    removeAllWeapons _oldUnit;
+    deleteVehicle _oldUnit;
+};
